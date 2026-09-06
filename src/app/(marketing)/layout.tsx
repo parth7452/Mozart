@@ -20,17 +20,17 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — AI-native invoice factoring`,
+  title: `${SITE_NAME} — invoice factoring for staffing and suppliers`,
   description: META_DESCRIPTION,
   openGraph: {
-    title: `${SITE_NAME} — AI-native invoice factoring`,
+    title: `${SITE_NAME} — invoice factoring for staffing and suppliers`,
     description: META_DESCRIPTION,
     type: "website",
     siteName: SITE_NAME,
   },
   twitter: {
     card: "summary",
-    title: `${SITE_NAME} — AI-native invoice factoring`,
+    title: `${SITE_NAME} — invoice factoring for staffing and suppliers`,
     description: META_DESCRIPTION,
   },
 };

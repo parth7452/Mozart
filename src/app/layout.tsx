@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: {
-    default: `${SITE_NAME} — AI-native invoice factoring`,
+    default: `${SITE_NAME} — invoice factoring for staffing and suppliers`,
     template: `%s · ${SITE_NAME}`,
   },
   description: META_DESCRIPTION,
