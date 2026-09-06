@@ -30,7 +30,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
       </p>
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
-          <h2 className="mb-2 font-serif text-xl">Support docs (stub ingest)</h2>
+          <h2 className="mb-2 font-semibold text-xl">Support docs (stub ingest)</h2>
           <ul className="space-y-1 text-sm">
             {invoice.documents.map((d) => (
               <li key={d.id}>
@@ -40,7 +40,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
           </ul>
         </Card>
         <Card>
-          <h2 className="mb-2 font-serif text-xl">Duplicate check</h2>
+          <h2 className="mb-2 font-semibold text-xl">Duplicate check</h2>
           {dups.length === 0 ? (
             <p className="text-sm text-ink/70">No duplicates across the book.</p>
           ) : (
@@ -54,7 +54,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
           )}
         </Card>
         <Card>
-          <h2 className="mb-2 font-serif text-xl">
+          <h2 className="mb-2 font-semibold text-xl">
             Extract · {extractSchemaName(vertical)}
           </h2>
           {payload ? (
@@ -64,7 +64,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
           )}
         </Card>
         <Card>
-          <h2 className="mb-2 font-serif text-xl">Match scores</h2>
+          <h2 className="mb-2 font-semibold text-xl">Match scores</h2>
           {invoice.match ? (
             <ul className="text-sm">
               <li>Invoice ↔ support: {invoice.match.invoiceToSupport}</li>

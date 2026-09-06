@@ -8,8 +8,8 @@
 
 html,
 body {
-  background: #f4efe6;
-  color: #1a1714;
+  background: #f3f4f6;
+  color: #111827;
 }
 
 body {
@@ -30,7 +30,7 @@ th,
 td {
   text-align: left;
   padding: 0.65rem 0.75rem;
-  border-bottom: 1px solid #d8cfc0;
+  border-bottom: 1px solid #e5e7eb;
   vertical-align: top;
 }
 
@@ -38,6 +38,6 @@ th {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #6b6256;
+  color: #6b7280;
   font-weight: 600;
 }

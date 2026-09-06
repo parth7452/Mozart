@@ -29,7 +29,7 @@ export function AdapterPanel({ clientId }: { clientId: string }) {
 
   return (
     <Card>
-      <h2 className="mb-2 font-serif text-xl">Mock adapters</h2>
+      <h2 className="mb-2 font-semibold text-xl">Mock adapters</h2>
       <p className="mb-3 text-sm text-ink/60">
         Interface seams only. No live vendor calls, no KYB spend.
       </p>

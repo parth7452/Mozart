@@ -17,7 +17,7 @@ export default async function ServicingPage() {
       </p>
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
-          <h2 className="mb-2 font-serif text-xl">Reserves</h2>
+          <h2 className="mb-2 font-semibold text-xl">Reserves</h2>
           {snap.reserves.length === 0 ? (
             <Empty>No reserve accounts.</Empty>
           ) : (
@@ -45,7 +45,7 @@ export default async function ServicingPage() {
         </Card>
         <CashAppForm invoices={snap.invoices.map((i) => ({ id: i.id, label: `${i.invoiceNumber} · ${i.client.name}` }))} />
         <Card>
-          <h2 className="mb-2 font-serif text-xl">Cash applications</h2>
+          <h2 className="mb-2 font-semibold text-xl">Cash applications</h2>
           {snap.cashApps.length === 0 ? (
             <Empty>None. Stub only.</Empty>
           ) : (
@@ -59,7 +59,7 @@ export default async function ServicingPage() {
           )}
         </Card>
         <Card>
-          <h2 className="mb-2 font-serif text-xl">Collection cadence</h2>
+          <h2 className="mb-2 font-semibold text-xl">Collection cadence</h2>
           {snap.collections.length === 0 ? (
             <Empty>Queue empty. Approve an invoice in credit to enqueue DAY_0–DAY_45.</Empty>
           ) : (
@@ -76,7 +76,7 @@ export default async function ServicingPage() {
           )}
         </Card>
         <Card className="md:col-span-2">
-          <h2 className="mb-2 font-serif text-xl">UCC-1 filings</h2>
+          <h2 className="mb-2 font-semibold text-xl">UCC-1 filings</h2>
           {snap.filings.length === 0 ? (
             <Empty>No filings.</Empty>
           ) : (

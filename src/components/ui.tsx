@@ -14,9 +14,9 @@ export function PageShell({
     <div className="mx-auto max-w-6xl px-4 py-8">
       <div className="mb-6">
         {kicker ? (
-          <div className="mb-1 text-[11px] uppercase tracking-[0.18em] text-gold">{kicker}</div>
+          <div className="mb-1 text-[11px] uppercase tracking-[0.18em] text-slate-600">{kicker}</div>
         ) : null}
-        <h1 className="font-serif text-3xl tracking-tight">{title}</h1>
+        <h1 className="font-semibold text-3xl tracking-tight">{title}</h1>
       </div>
       {children}
     </div>

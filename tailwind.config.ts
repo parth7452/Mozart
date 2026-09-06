@@ -5,19 +5,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#1a1714",
-        paper: "#f4efe6",
-        cream: "#fbf7f0",
-        rule: "#d8cfc0",
-        crimson: "#9b1d2e",
-        gold: "#a67c2d",
-        pass: "#2f6d4f",
-        review: "#8a6414",
-        fail: "#9b1d2e",
+        ink: "#111827",
+        paper: "#f3f4f6",
+        cream: "#ffffff",
+        rule: "#e5e7eb",
+        crimson: "#b91c1c",
+        pass: "#047857",
+        review: "#b45309",
+        fail: "#b91c1c",
       },
       fontFamily: {
-        serif: ["Fraunces", "Iowan Old Style", "Palatino", "Georgia", "serif"],
-        sans: ["IBM Plex Sans", "Helvetica Neue", "system-ui", "sans-serif"],
+        sans: ["ui-sans-serif", "system-ui", "Helvetica Neue", "Arial", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "monospace"],
       },
     },

@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export default async function DemoPage() {
   const initial = await demoState();
   return (
-    <PageShell title="Demo walkthrough" kicker="Fake invoice → extract → HITL">
+    <PageShell title="Demo walkthrough" kicker="Factoring path · fake invoice → extract → HITL">
       <DemoWalkthrough initial={JSON.parse(JSON.stringify(initial))} />
     </PageShell>
   );

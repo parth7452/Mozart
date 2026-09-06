@@ -185,7 +185,7 @@ export function DemoWalkthrough({ initial }: { initial: DemoState }) {
       </ol>
 
       <Card>
-        <h2 className="mb-2 font-serif text-xl">Outcome</h2>
+        <h2 className="mb-2 font-semibold text-xl">Outcome</h2>
         <p className="text-sm">
           Ready to fund: <strong>{state.steps.readyToFund ? "yes (state only)" : "no"}</strong>. Live
           funding remains disabled. There is no ACH, no lockbox, and no funded ledger.
@@ -218,8 +218,8 @@ function Step({
     <li>
       <Card>
         <div className="mb-2 flex items-center justify-between">
-          <h2 className="font-serif text-xl">
-            <span className="mr-2 text-gold">{n}</span>
+          <h2 className="font-semibold text-xl">
+            <span className="mr-2 text-slate-600">{n}</span>
             {title}
           </h2>
           <Badge status={done ? "PASS" : "PENDING"}>{done ? "done" : "todo"}</Badge>

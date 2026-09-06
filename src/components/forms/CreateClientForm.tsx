@@ -35,7 +35,7 @@ export function CreateClientForm() {
 
   return (
     <Card>
-      <h2 className="mb-3 font-serif text-xl">New client</h2>
+      <h2 className="mb-3 font-semibold text-xl">New client</h2>
       <form onSubmit={onSubmit} className="space-y-3">
         <Field label="Name">
           <input className={inputClass()} name="name" required placeholder="Harborline Staffing LLC" />

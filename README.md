@@ -1,6 +1,8 @@
 # Mozart
 
-Phase 1 **scaffold** for an invoice-factoring ops console (Corgi analog: risk-bearing receivables + AI ops). This pass is typed domain models, mock integrations, and a walkable demo. It is **not** a live funder.
+Working name for an **AI-native US invoice factoring** product (Corgi analog: risk-bearing AR factor + AI ops). Target clients: staffing agencies and SMB suppliers to enterprise/government.
+
+This repo is **not** a music, piano, or cultural brand. Phase 1 is an ops-console scaffold: typed domain models, mock integrations, and a walkable demo. It is **not** a live funder and **not** a marketing site.
 
 **NO LIVE FUNDING.** Credit v1 is shadow / recommend-only. A human must approve before any invoice can sit in `READY_TO_FUND`. There is no ACH, lockbox, or payout ledger.
 

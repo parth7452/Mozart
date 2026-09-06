@@ -25,7 +25,7 @@ export function OnboardingDecide({
 
   return (
     <Card>
-      <h2 className="mb-2 font-serif text-xl">Status machine</h2>
+      <h2 className="mb-2 font-semibold text-xl">Status machine</h2>
       <p className="mb-3 text-sm text-ink/60">
         Current: <span className="font-medium">{current}</span>. Transitions: PASS | REVIEW | FAIL
         (from in-progress).

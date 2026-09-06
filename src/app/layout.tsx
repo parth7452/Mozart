@@ -5,8 +5,8 @@ import { Nav } from "@/components/Nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mozart — ops console",
-  description: "Invoice factoring ops scaffold. No live funding.",
+  title: "Mozart — invoice factoring ops",
+  description: "US invoice factoring ops scaffold (staffing + SMB supplier). No live funding.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

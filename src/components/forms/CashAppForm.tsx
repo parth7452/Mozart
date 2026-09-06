@@ -27,7 +27,7 @@ export function CashAppForm({ invoices }: { invoices: { id: string; label: strin
 
   return (
     <Card>
-      <h2 className="mb-2 font-serif text-xl">Cash-app stub</h2>
+      <h2 className="mb-2 font-semibold text-xl">Cash-app stub</h2>
       <form onSubmit={onSubmit} className="space-y-3">
         <Field label="Invoice">
           <select className={inputClass()} name="invoiceId" required>

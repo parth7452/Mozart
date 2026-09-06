@@ -16,8 +16,10 @@ export function Nav() {
     <header className="border-b border-rule bg-cream">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3">
         <Link href="/" className="flex items-baseline gap-2">
-          <span className="font-serif text-2xl tracking-tight">Mozart</span>
-          <span className="text-[11px] uppercase tracking-[0.18em] text-gold">Phase 1</span>
+          <span className="text-lg font-semibold tracking-tight">Mozart</span>
+          <span className="text-[11px] uppercase tracking-wider text-ink/50">
+            Invoice factoring
+          </span>
         </Link>
         <nav className="flex flex-wrap items-center gap-4 text-sm">
           {LINKS.map((l) => (

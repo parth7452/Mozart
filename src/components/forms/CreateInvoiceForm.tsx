@@ -55,7 +55,7 @@ export function CreateInvoiceForm({
 
   return (
     <Card>
-      <h2 className="mb-3 font-serif text-xl">Ingest invoice</h2>
+      <h2 className="mb-3 font-semibold text-xl">Ingest invoice</h2>
       <form onSubmit={onSubmit} className="space-y-3">
         <Field label="Client">
           <select className={inputClass()} name="clientId" required>

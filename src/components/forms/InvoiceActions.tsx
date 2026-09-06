@@ -17,7 +17,7 @@ export function InvoiceActions({ invoiceId }: { invoiceId: string }) {
 
   return (
     <Card>
-      <h2 className="mb-2 font-serif text-xl">Pipeline</h2>
+      <h2 className="mb-2 font-semibold text-xl">Pipeline</h2>
       <p className="mb-3 text-sm text-ink/60">
         Dual-path extract → match → debtor confirm stub. Credit is a separate human-gated step.
       </p>

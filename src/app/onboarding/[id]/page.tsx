@@ -22,7 +22,7 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
-          <h2 className="mb-2 font-serif text-xl">Selection filter</h2>
+          <h2 className="mb-2 font-semibold text-xl">Selection filter</h2>
           <p className="mb-3 text-sm text-ink/70">
             Accounting (QBO / Xero / NetSuite) + bank (Plaid) must both connect before a fund
             path can open. Live funding stays off.
@@ -38,7 +38,7 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
         <AdapterPanel clientId={client.id} />
         <OnboardingDecide clientId={client.id} current={client.onboardingStatus} />
         <Card>
-          <h2 className="mb-2 font-serif text-xl">Adapter runs</h2>
+          <h2 className="mb-2 font-semibold text-xl">Adapter runs</h2>
           {client.adapterRuns.length === 0 ? (
             <p className="text-sm text-ink/60">No mock adapters run yet.</p>
           ) : (
