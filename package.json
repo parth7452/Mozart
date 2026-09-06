@@ -2,7 +2,7 @@
   "name": "mozart",
   "version": "0.1.0",
   "private": true,
-  "description": "Mozart Phase 1 scaffold — invoice factoring ops console. Shadow credit only. No live funding.",
+  "description": "Mozart — AI-native US invoice factoring. Public marketing site + Phase 1 ops scaffold. Shadow credit only. No live funding.",
   "engines": {
     "node": ">=20"
   },
