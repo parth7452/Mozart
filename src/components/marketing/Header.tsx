@@ -32,9 +32,6 @@ export function MarketingHeader() {
             {l.label}
           </Link>
         ))}
-        <Link href="/#talk" className="whitespace-nowrap hover:text-soot">
-          {COPY.nav.talk}
-        </Link>
       </nav>
     </header>
   );
