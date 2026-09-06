@@ -2,7 +2,7 @@ import { parseExtract, type ExtractPayload } from "@/domain/extract";
 import type { DocKind } from "@/domain/states";
 import type { Vertical } from "@/domain/verticals";
 
-export type IngestDoc = { kind: DocKind; filename: string };
+export type IngestDoc = { kind: string; filename: string };
 
 export function mockExtract(input: {
   vertical: Vertical;

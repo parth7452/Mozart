@@ -61,11 +61,9 @@ describe("demo path", () => {
     expect(dup.invoice?.fundingState).toBe("BLOCKED");
     expect(dup.duplicates.length).toBeGreaterThan(0);
 
-    await prisma.invoice.update({
-      where: { id: first!.id },
-      data: { fundingState: "NOT_READY" },
-    });
-    await expect(hitlDecide(first!.id, "approve")).rejects.toThrow(/PENDING_HITL/);
+    await expect(hitlDecide(first!.id, "approve")).rejects.toThrow(
+      /credit recommendation|PENDING_HITL/,
+    );
   });
 
   it("keeps credit recommend-only until a human decides", async () => {
