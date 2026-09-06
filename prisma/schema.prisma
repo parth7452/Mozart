@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Phase 1 local default: SQLite (zero-ops `npm run dev`).
+// Production target is Postgres — swap provider to "postgresql" and
+// point DATABASE_URL at docker-compose or a managed instance.
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  id                  String   @id @default(cuid())
+  name                String
+  legalName           String
+  vertical            String
+  onboardingStatus    String   @default("DRAFT")
+  accountingProvider  String?
+  accountingConnected Boolean  @default(false)
+  bankConnected       Boolean  @default(false)
+  kybStatus           String   @default("PENDING")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  invoices    Invoice[]
+  adapterRuns AdapterRun[]
+  ucc1        Ucc1Filing?
+  reserve     ReserveAccount?
+}
+
+model AdapterRun {
+  id        String   @id @default(cuid())
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  kind      String
+  status    String
+  summary   String
+  payload   String
+  createdAt DateTime @default(now())
+}
+
+model Invoice {
+  id            String   @id @default(cuid())
+  clientId      String
+  client        Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  invoiceNumber String
+  debtorName    String
+  debtorId      String?
+  amountCents   Int
+  issueDate     DateTime
+  dueDate       DateTime
+  status        String   @default("INGESTED")
+  fundingState  String   @default("NOT_READY")
+  isDuplicate   Boolean  @default(false)
+  duplicateOfId String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  documents     Document[]
+  extract       ExtractResult?
+  match         MatchResult?
+  confirmation  DebtorConfirmation?
+  credit        CreditRecommendation?
+  cashApps      CashApplication[]
+  collections   CollectionItem[]
+
+  @@index([clientId, invoiceNumber])
+  @@index([invoiceNumber, debtorName])
+}
+
+model Document {
+  id        String   @id @default(cuid())
+  invoiceId String
+  invoice   Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  kind      String
+  filename  String
+  mimeType  String
+  stubPath  String
+  createdAt DateTime @default(now())
+}
+
+model ExtractResult {
+  id        String   @id @default(cuid())
+  invoiceId String   @unique
+  invoice   Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  vertical  String
+  payload   String
+  createdAt DateTime @default(now())
+}
+
+model MatchResult {
+  id               String  @id @default(cuid())
+  invoiceId        String  @unique
+  invoice          Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  invoiceToSupport Int
+  invoiceToBooks   Int
+  overall          Int
+  notes            String
+}
+
+model DebtorConfirmation {
+  id          String @id @default(cuid())
+  invoiceId   String @unique
+  invoice     Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  status      String @default("STUB")
+  notes       String
+  stubContact String?
+}
+
+model CreditRecommendation {
+  id                    String    @id @default(cuid())
+  invoiceId             String    @unique
+  invoice               Invoice   @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  riskScore             Int
+  dilutionBps           Int
+  fraudFlags            String
+  recommendedAdvancePct Int
+  recommendedReservePct Int
+  rationale             String
+  status                String    @default("SHADOW")
+  decidedBy             String?
+  decidedAt             DateTime?
+  createdAt             DateTime  @default(now())
+}
+
+model ReserveAccount {
+  id               String @id @default(cuid())
+  clientId         String @unique
+  client           Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  heldCents        Int    @default(0)
+  releasedCents    Int    @default(0)
+  targetReservePct Int    @default(10)
+}
+
+model CashApplication {
+  id          String   @id @default(cuid())
+  invoiceId   String
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  amountCents Int
+  source      String   @default("STUB")
+  appliedAt   DateTime @default(now())
+  note        String
+}
+
+model CollectionItem {
+  id        String   @id @default(cuid())
+  invoiceId String
+  invoice   Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  cadence   String
+  dueAt     DateTime
+  status    String   @default("QUEUED")
+  note      String?
+}
+
+model Ucc1Filing {
+  id           String    @id @default(cuid())
+  clientId     String    @unique
+  client       Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  status       String    @default("NOT_STARTED")
+  jurisdiction String    @default("DE")
+  filedAt      DateTime?
+  notes        String?
+}

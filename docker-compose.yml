@@ -1,0 +1,18 @@
+# Optional. Phase 1 local default is SQLite (see .env.example).
+# When you switch prisma/schema.prisma provider to postgresql:
+#   docker compose up -d
+#   DATABASE_URL=postgresql://mozart:mozart@localhost:5432/mozart npm run db:push
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: mozart
+      POSTGRES_PASSWORD: mozart
+      POSTGRES_DB: mozart
+    ports:
+      - "5432:5432"
+    volumes:
+      - mozart_pg:/var/lib/postgresql/data
+
+volumes:
+  mozart_pg:
