@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { META_DESCRIPTION, SITE_NAME, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -23,7 +24,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <ScrollToTop />
+        {children}
+      </body>
     </html>
   );
 }
