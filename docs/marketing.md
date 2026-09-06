@@ -8,7 +8,9 @@ It lives in the same Next.js App Router app as the Phase 1 ops scaffold:
 
 | URL | What |
 | --- | --- |
-| `/`, `/privacy` | Public marketing |
+| `/` | Public homepage (approved copy v2.1) |
+| `/thesis` | Demoted thesis. Not in primary nav. |
+| `/privacy` | Privacy |
 | `/desk`, `/demo`, `/onboarding`, `/verification`, `/credit`, `/servicing` | Internal ops console |
 | `/api/*` | Ops API stubs |
 
@@ -41,7 +43,9 @@ All marketing vars are `NEXT_PUBLIC_*` (inlined at build time). None are secrets
 
 Ops-only vars (`DATABASE_URL`, stub auth) are unchanged. See root `.env.example`.
 
-Copy on the site is intentionally traction-free: no customer logos, AUM, loss rates, or testimonials.
+Public homepage copy is **v2.1** (source of truth: `src/lib/site.ts` `COPY`). Do not invent customer counts, dollars funded, or loss rates. Thesis lives at `/thesis`, not as the first homepage section.
+
+Primary nav: How it works, Who it's for, Talk to the founder. Hero and closing CTA both go to the founder (mailto by default). Do not put the email address next to the hero button.
 
 ## Deploy on Vercel
 

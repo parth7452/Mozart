@@ -8,7 +8,7 @@ Two surfaces share one Next.js App Router app:
 
 | Surface | Routes | Purpose |
 | --- | --- | --- |
-| **Marketing** | `/`, `/privacy` | Public early-access site for `mozart.financial` |
+| **Marketing** | `/`, `/thesis`, `/privacy` | Public early-access site for `mozart.financial` |
 | **Ops desk** | `/desk`, `/demo`, plus onboarding / verification / credit / servicing | Phase 1 scaffold: typed domain models, mock integrations, walkable demo |
 
 **NO LIVE FUNDING** on either surface. Credit v1 is shadow / recommend-only. A human must approve before any invoice can sit in `READY_TO_FUND`. There is no ACH, lockbox, or payout ledger. The marketing site is research-stage and does not take applications that fund.
@@ -68,7 +68,7 @@ Deploy the repo root to **Vercel** (Next.js preset). After a `*.vercel.app` URL 
 ## Architecture
 
 ```
-src/app/(marketing)/   public site (home, privacy)
+src/app/(marketing)/   public site (home, thesis, privacy)
 src/app/(desk)/        ops UI (desk, demo, onboarding, verification, credit, servicing)
 src/app/api/           ops API stubs
 src/components/        ops UI + src/components/marketing

@@ -1,4 +1,4 @@
-import { calUrl, founderCtaHref, founderCtaLabel, founderEmail, founderMailto } from "@/lib/site";
+import { founderCtaHref, founderCtaLabel, founderEmail } from "@/lib/site";
 
 type Variant = "primary" | "ghost" | "brass";
 
@@ -30,26 +30,24 @@ export function FounderCta({
   );
 }
 
-export function FounderCtaPair({ className = "" }: { className?: string }) {
-  const cal = calUrl();
+/** Hero / section CTA: one button, no email sitting next to it. */
+export function FounderCtaBlock({
+  className = "",
+  note,
+  children,
+}: {
+  className?: string;
+  note?: string;
+  children?: string;
+}) {
   return (
-    <div className={`flex flex-col gap-3 sm:flex-row sm:items-center ${className}`}>
-      <FounderCta>{cal ? "Book a research call" : "Talk to the founder"}</FounderCta>
-      {cal ? (
-        <a
-          href={founderMailto()}
-          className="text-sm text-soot/70 underline decoration-hairline underline-offset-4 hover:text-soot"
-        >
-          Or email {founderEmail()}
-        </a>
-      ) : (
-        <a
-          href={founderMailto()}
-          className="text-sm text-soot/70 underline decoration-hairline underline-offset-4 hover:text-soot"
-        >
-          {founderEmail()}
-        </a>
-      )}
+    <div className={`flex flex-col items-start gap-3 ${className}`}>
+      <FounderCta>{children ?? "Talk to the founder"}</FounderCta>
+      {note ? <p className="text-sm leading-relaxed text-soot/55">{note}</p> : null}
     </div>
   );
+}
+
+export function founderEmailCtaLabel(): string {
+  return `Email Parth — ${founderEmail()}`;
 }

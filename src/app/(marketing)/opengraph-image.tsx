@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Mozart — AI-native invoice factoring";
+export const alt = "Mozart — invoice factoring for staffing firms and suppliers";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -22,27 +22,27 @@ export default function OpenGraphImage() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              fontSize: 22,
+              fontSize: 20,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "#9A7348",
             }}
           >
-            Mozart · mozart.financial
+            Early access · Research stage · Not live funding
           </div>
           <div
             style={{
-              marginTop: 28,
-              fontSize: 68,
-              lineHeight: 1.1,
-              maxWidth: 960,
+              marginTop: 32,
+              fontSize: 58,
+              lineHeight: 1.12,
+              maxWidth: 880,
             }}
           >
-            AI-native invoice factoring for staffing firms and SMB suppliers.
+            {"Get cash from invoices you've already earned, while your customer is still paying."}
           </div>
         </div>
-        <div style={{ display: "flex", fontSize: 24, color: "#1A3C32" }}>
-          Research stage · Not live funding · US receivables
+        <div style={{ display: "flex", fontSize: 22, color: "#1A3C32" }}>
+          Mozart · Invoice factoring · mozart.financial
         </div>
       </div>
     ),
