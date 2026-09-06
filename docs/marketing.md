@@ -84,4 +84,6 @@ Until DNS is cut over, share the `*.vercel.app` URL. Do not announce live fundin
 
 ## Brand check
 
-Search the repo for piano, classical, Wolfgang, concert, symphony before shipping copy changes. The public one-liner is asserted in `tests/marketing-site.test.ts`.
+Search the repo for piano, classical, Wolfgang, concert, symphony before shipping copy changes. The public one-liner and first-screen copy are asserted in `tests/marketing-site.test.ts`.
+
+Mozart is **seller-side AR / invoice factoring** (purchased receivables). Do not frame the public site as AP finance, reverse factoring, dynamic discounting, or a buyer-side early-pay product. If you mention slow enterprise payers, say the buyer pays net-30/60 — not “AP” in a headline.
