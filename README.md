@@ -2,9 +2,16 @@
 
 Working name for an **AI-native US invoice factoring** product (Corgi analog: risk-bearing AR factor + AI ops). Target clients: staffing agencies and SMB suppliers to enterprise/government.
 
-This repo is **not** a music, piano, or cultural brand. Phase 1 is an ops-console scaffold: typed domain models, mock integrations, and a walkable demo. It is **not** a live funder and **not** a marketing site.
+This repo is **not** a music, piano, or cultural brand.
 
-**NO LIVE FUNDING.** Credit v1 is shadow / recommend-only. A human must approve before any invoice can sit in `READY_TO_FUND`. There is no ACH, lockbox, or payout ledger.
+Two surfaces share one Next.js App Router app:
+
+| Surface | Routes | Purpose |
+| --- | --- | --- |
+| **Marketing** | `/`, `/privacy` | Public early-access site for `mozart.financial` |
+| **Ops desk** | `/desk`, `/demo`, plus onboarding / verification / credit / servicing | Phase 1 scaffold: typed domain models, mock integrations, walkable demo |
+
+**NO LIVE FUNDING** on either surface. Credit v1 is shadow / recommend-only. A human must approve before any invoice can sit in `READY_TO_FUND`. There is no ACH, lockbox, or payout ledger. The marketing site is research-stage and does not take applications that fund.
 
 ## Setup
 
@@ -14,8 +21,14 @@ Requires Node 20+.
 cp .env.example .env          # SQLite by default
 npm install
 npm run setup                 # prisma generate + db push + seed
-npm run dev                   # http://localhost:3000
+npm run dev                   # http://localhost:3000  (marketing)
 ```
+
+Then:
+
+- Public site: [http://localhost:3000](http://localhost:3000)
+- Ops desk: [http://localhost:3000/desk](http://localhost:3000/desk)
+- Demo walkthrough: [http://localhost:3000/demo](http://localhost:3000/demo)
 
 Useful scripts:
 
@@ -24,11 +37,13 @@ Useful scripts:
 | `npm run dev` | Next.js App Router (Turbopack) |
 | `npm run setup` | Generate client, push schema, seed demo book |
 | `npm run db:reset` | Wipe SQLite and re-seed |
-| `npm test` | Vitest (demo path + policy) |
+| `npm test` | Vitest (demo path + policy + marketing CTA) |
 | `npm run smoke` | Service-layer smoke of fake invoice → extract → HITL |
 | `npm run build` | Production build |
 
-Open `/demo` for the walkthrough: seed → fake invoice → staffing extract → match → shadow credit → HITL approve. The crimson banner stays up the entire time.
+Open `/demo` for the walkthrough: seed → fake invoice → staffing extract → match → shadow credit → HITL approve. The crimson banner stays up on ops routes.
+
+Marketing pages do not need the database. `npm run setup` is only required for the desk.
 
 ### Postgres later
 
@@ -38,15 +53,31 @@ Local default is SQLite so `dev` and smoke work with no Docker. Production targe
 2. In `prisma/schema.prisma`, set `provider = "postgresql"`
 3. `DATABASE_URL=postgresql://mozart:mozart@localhost:5432/mozart npm run db:push`
 
+### Marketing env + `mozart.financial`
+
+Documented in [docs/marketing.md](docs/marketing.md). Short version:
+
+| Variable | Default | Role |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | `https://mozart.financial` | Canonical URL / sitemap |
+| `NEXT_PUBLIC_FOUNDER_EMAIL` | `parthpahuja@gmail.com` | CTA mailto |
+| `NEXT_PUBLIC_CAL_URL` | unset | If set, CTA becomes “Book a research call” |
+
+Deploy the repo root to **Vercel** (Next.js preset). After a `*.vercel.app` URL exists, add `mozart.financial` and `www` in Vercel Domains, then create the records Vercel shows at **Porkbun**. Do not guess IPs — paste what the dashboard prints.
+
 ## Architecture
 
 ```
-src/domain/          policy, verticals, extract Zod schemas, state machines, credit math
-src/integrations/    Bank / accounting / KYB / debtor-confirm interfaces + mocks
-src/server/          Prisma services used by API routes, seed, and smoke
-src/app/             App Router UI + /api stubs
-src/components/      Ops UI (banner, forms, demo walkthrough)
-prisma/              schema + seed
+src/app/(marketing)/   public site (home, privacy)
+src/app/(desk)/        ops UI (desk, demo, onboarding, verification, credit, servicing)
+src/app/api/           ops API stubs
+src/components/        ops UI + src/components/marketing
+src/lib/site.ts        public CTA / domain config
+src/domain/            policy, verticals, extract Zod schemas, state machines, credit math
+src/integrations/      Bank / accounting / KYB / debtor-confirm interfaces + mocks
+src/server/            Prisma services used by API routes, seed, and smoke
+prisma/                schema + seed
+docs/marketing.md      run, env, Vercel, Porkbun DNS
 ```
 
 Boring stack: **Next.js 15 App Router**, **TypeScript**, **Prisma**, **Zod**, **Tailwind**, **Vitest**. Auth is a stub session (`src/lib/auth.ts`) — `Alex Chen · credit_officer`.
@@ -100,7 +131,7 @@ No live vendor API calls and no KYB spend in this build.
 - HITL required before `READY_TO_FUND`
 - accounting + bank required before the fund path would open
 
-The UI banner repeats this on every page. Do not invent traction or loss metrics here.
+The ops banner repeats this on every desk page. The marketing footer repeats that this site does not offer live funding. Do not invent traction or loss metrics.
 
 ## Next Phase 1 priorities
 
@@ -111,11 +142,9 @@ The UI banner repeats this on every page. Do not invent traction or loss metrics
 5. Debtor confirmation that actually reaches AP (still not a funding instruction).
 6. Stronger duplicate + related-party checks across the book.
 7. Credit officer audit log and dual-control if advance % exceeds a threshold.
-8. Marketing / landing site stays **out of this repo** (separate follow-on).
 
 ## Out of scope (this pass)
 
-- Marketing site
 - Production Plaid / QBO / KYB keys
 - Real money movement or lockbox
 - Invented traction or loss metrics

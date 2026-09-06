@@ -21,7 +21,12 @@ export default async function DeskPage() {
     <PageShell title="Factoring ops desk" kicker="Invoice factoring">
       <p className="mb-6 max-w-2xl text-sm text-ink/70">
         Mozart underwrites and services purchased invoices for staffing firms and SMB
-        suppliers. This build is a scaffold: shadow credit, human gate, no ACH.
+        suppliers. This build is a scaffold: shadow credit, human gate, no ACH. The
+        public site lives at{" "}
+        <Link href="/" className="underline">
+          /
+        </Link>
+        .
       </p>
       <div className="mb-8 grid gap-4 md:grid-cols-4">
         <Stat label="Clients" value={String(clients.length)} href="/onboarding" />

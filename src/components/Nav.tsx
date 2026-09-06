@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getSession } from "@/lib/auth";
 
 const LINKS = [
-  { href: "/", label: "Desk" },
+  { href: "/desk", label: "Desk" },
   { href: "/demo", label: "Demo" },
   { href: "/onboarding", label: "Onboarding" },
   { href: "/verification", label: "Verification" },
@@ -15,7 +15,7 @@ export function Nav() {
   return (
     <header className="border-b border-rule bg-cream">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3">
-        <Link href="/" className="flex items-baseline gap-2">
+        <Link href="/desk" className="flex items-baseline gap-2">
           <span className="text-lg font-semibold tracking-tight">Mozart</span>
           <span className="text-[11px] uppercase tracking-wider text-ink/50">
             Invoice factoring
@@ -31,6 +31,9 @@ export function Nav() {
         <div className="text-right text-xs text-ink/70">
           <div>{session.name}</div>
           <div className="uppercase tracking-wider">{session.role} · auth stub</div>
+          <Link href="/" className="mt-1 inline-block text-ink/50 hover:text-ink">
+            Public site
+          </Link>
         </div>
       </div>
     </header>
