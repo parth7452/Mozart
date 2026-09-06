@@ -38,7 +38,7 @@ export default function OpenGraphImage() {
               maxWidth: 880,
             }}
           >
-            Get cash from invoices you've already earned, while your customer is still paying.
+            {"Get cash from invoices you've already earned, while your customer is still paying."}
           </div>
         </div>
         <div style={{ display: "flex", fontSize: 22, color: "#1A3C32" }}>
