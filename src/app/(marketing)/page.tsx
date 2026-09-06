@@ -1,5 +1,5 @@
 import { FounderCta, FounderCtaPair } from "@/components/marketing/FounderCta";
-import { ONE_LINER } from "@/lib/site";
+import { HERO_FACTS, HERO_HEADLINE, ONE_LINER } from "@/lib/site";
 
 const LOOP = [
   {
@@ -53,7 +53,7 @@ function Hero() {
           Early access · Research stage
         </p>
         <h1 className="mt-5 max-w-4xl font-serif text-[2.35rem] leading-[1.12] tracking-tight text-soot sm:text-5xl lg:text-[3.65rem]">
-          Invoice cash for staffing firms and suppliers who wait on enterprise AP.
+          {HERO_HEADLINE}
         </h1>
         <p className="mt-7 max-w-2xl text-base leading-relaxed text-soot/70 sm:text-lg">
           {ONE_LINER} Mozart is being built as an underwriting and servicing
@@ -62,9 +62,9 @@ function Hero() {
         </p>
         <FounderCtaPair className="mt-9" />
         <dl className="mt-14 grid gap-6 border-t border-hairline pt-8 sm:grid-cols-3">
-          <HeroFact k="Staffing" v="Weekly payroll. Customers pay net-30 to 60. The gap is cash you already earned." />
-          <HeroFact k="SMB suppliers" v="You delivered. Enterprise or government AP is still in the queue." />
-          <HeroFact k="US invoices" v="Asset-backed volume. Software-shaped ops. No live funding on this site." />
+          {HERO_FACTS.map((fact) => (
+            <HeroFact key={fact.k} k={fact.k} v={fact.v} />
+          ))}
         </dl>
       </div>
     </section>
@@ -166,13 +166,14 @@ function Who() {
               SMB suppliers
             </p>
             <h3 className="mt-3 font-serif text-2xl tracking-tight">
-              Enterprise &amp; government lag
+              Cash trapped in receivables
             </h3>
             <p className="mt-4 text-[15px] leading-relaxed text-soot/75">
-              You shipped. The PO is clean. The packing slip exists. AP at a
-              Fortune 1000 or an agency is still in queue. Good invoices sit on
-              the balance sheet and starve operations. The second path is PO +
-              delivery documentation — proof the receivable is real.
+              You shipped. The PO is clean. The packing slip exists. The buyer
+              still pays on their clock — net-30, 60, or later. Those invoices
+              sit on your books as receivables and starve operations. The second
+              path is PO + delivery documentation — proof the receivable is
+              real.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-soot/70">
               <li className="flex gap-2">

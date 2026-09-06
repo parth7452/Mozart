@@ -14,7 +14,8 @@ export function MarketingFooter() {
             <p className="mt-5 max-w-md text-sm leading-relaxed text-stone/75">
               Working name for a research-stage, AI-native US invoice factoring
               project. Built for staffing owners and CFOs, and for SMB suppliers
-              waiting on enterprise or government AP. This is not a music brand.
+              with unpaid invoices to enterprise or government buyers. This is
+              not a music brand.
             </p>
           </div>
           <div>
