@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { ClosingCtas, HeroCtaBlock } from "@/components/marketing/FounderCta";
-import { COPY } from "@/lib/site";
+import { COPY, META_TITLE } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: { absolute: META_TITLE },
+};
 
 export default function MarketingHome() {
   return (

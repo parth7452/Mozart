@@ -20,7 +20,9 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: META_TITLE,
+  title: {
+    template: `%s · ${SITE_NAME}`,
+  },
   description: META_DESCRIPTION,
   openGraph: {
     title: META_TITLE,
