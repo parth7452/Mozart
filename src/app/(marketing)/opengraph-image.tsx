@@ -28,7 +28,7 @@ export default function OpenGraphImage() {
               color: "#9A7348",
             }}
           >
-            Early access · Research stage · Not live funding
+            Invoice factoring · Staffing & suppliers
           </div>
           <div
             style={{
@@ -38,7 +38,7 @@ export default function OpenGraphImage() {
               maxWidth: 880,
             }}
           >
-            {"Get cash from invoices you've already earned, while your customer is still paying."}
+            Payroll is Friday. Your client pays in 45 days.
           </div>
         </div>
         <div style={{ display: "flex", fontSize: 22, color: "#1A3C32" }}>

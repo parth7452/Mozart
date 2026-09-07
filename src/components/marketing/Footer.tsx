@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { COPY, founderEmail, SITE_DOMAIN } from "@/lib/site";
+import { COPY, founderEmail, founderMailto, SITE_DOMAIN } from "@/lib/site";
 
 export function MarketingFooter() {
   return (
@@ -28,8 +28,18 @@ export function MarketingFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/thesis" className="hover:text-stone">
-                  Thesis
+                <Link href="/#costs" className="hover:text-stone">
+                  {COPY.nav.costs}
+                </Link>
+              </li>
+              <li>
+                <Link href="/quote" className="hover:text-stone">
+                  {COPY.nav.quote}
+                </Link>
+              </li>
+              <li>
+                <Link href="/partners" className="hover:text-stone">
+                  Partners
                 </Link>
               </li>
               <li>
@@ -37,27 +47,22 @@ export function MarketingFooter() {
                   Privacy
                 </Link>
               </li>
-              <li>
-                <a href={`mailto:${founderEmail()}`} className="hover:text-stone">
-                  {founderEmail()}
-                </a>
-              </li>
             </ul>
           </div>
           <div>
             <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone/50">
-              Internal
+              Contact
             </div>
             <ul className="mt-3 space-y-2 text-sm text-stone/80">
               <li>
-                <Link href="/desk" className="hover:text-stone">
-                  Ops desk
-                </Link>
+                <a href={founderMailto("Mozart — founder")} className="hover:text-stone">
+                  {COPY.nav.founder}
+                </a>
               </li>
               <li>
-                <Link href="/demo" className="hover:text-stone">
-                  Scaffold demo
-                </Link>
+                <a href={`mailto:${founderEmail()}`} className="hover:text-stone">
+                  {founderEmail()}
+                </a>
               </li>
             </ul>
           </div>

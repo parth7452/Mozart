@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { IBM_Plex_Sans, Instrument_Serif } from "next/font/google";
 import { MarketingFooter } from "@/components/marketing/Footer";
 import { MarketingHeader } from "@/components/marketing/Header";
-import { META_DESCRIPTION, SITE_NAME } from "@/lib/site";
+import { META_DESCRIPTION, META_TITLE, SITE_NAME } from "@/lib/site";
 
 const sans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -20,17 +20,20 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — invoice factoring for staffing and suppliers`,
+  title: {
+    default: META_TITLE,
+    template: `%s · ${SITE_NAME}`,
+  },
   description: META_DESCRIPTION,
   openGraph: {
-    title: `${SITE_NAME} — invoice factoring for staffing and suppliers`,
+    title: META_TITLE,
     description: META_DESCRIPTION,
     type: "website",
     siteName: SITE_NAME,
   },
   twitter: {
-    card: "summary",
-    title: `${SITE_NAME} — invoice factoring for staffing and suppliers`,
+    card: "summary_large_image",
+    title: META_TITLE,
     description: META_DESCRIPTION,
   },
 };
