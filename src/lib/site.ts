@@ -2,7 +2,8 @@
 
 export const SITE_NAME = "Mozart";
 export const SITE_DOMAIN = "mozart.financial";
-export const DEFAULT_FOUNDER_EMAIL = "parthpahuja@gmail.com";
+export const DEFAULT_FOUNDER_EMAIL = "parth@mozart.financial";
+export const DEFAULT_CAL_URL = "https://cal.com/parth-mozart/20min";
 
 export function siteUrl(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
@@ -17,39 +18,41 @@ export function founderEmail(): string {
   return process.env.NEXT_PUBLIC_FOUNDER_EMAIL?.trim() || DEFAULT_FOUNDER_EMAIL;
 }
 
-export function calUrl(): string | null {
-  const raw = process.env.NEXT_PUBLIC_CAL_URL?.trim();
-  return raw || null;
+export function calUrl(): string {
+  return process.env.NEXT_PUBLIC_CAL_URL?.trim() || DEFAULT_CAL_URL;
 }
 
-export function founderMailto(subject = "Mozart research call"): string {
+export function founderMailto(subject = "Mozart quote request"): string {
   return `mailto:${founderEmail()}?subject=${encodeURIComponent(subject)}`;
 }
 
-/** Cal.com if configured, otherwise mailto the founder. */
-export function founderCtaHref(): string {
-  return calUrl() ?? founderMailto();
+export function bookCallHref(): string {
+  return calUrl();
 }
 
-export function founderCtaLabel(): string {
-  return calUrl() ? "Book a research call" : "Talk to the founder";
+export function quoteHref(): string {
+  return "/quote";
 }
 
-/** Approved public homepage copy v2.1. Do not invent metrics or live funding. */
+/**
+ * Public homepage copy — customer lead-gen with soft compliance.
+ * Do not invent traction, licenses, partner brands, or Mozart-as-funder claims.
+ */
 export const COPY = {
   nav: {
     how: "How it works",
     who: "Who it's for",
-    talk: "Talk to the founder",
+    costs: "What it costs",
+    quote: "Get a quote",
+    founder: "Founder",
   },
   hero: {
-    eyebrow: "Early access · Research stage · Not live funding",
-    headline:
-      "Get cash from invoices you've already earned, while your customer is still paying.",
+    headline: "Payroll is Friday. Your client pays in 45 days.",
     subhead:
-      "Mozart is building invoice factoring for staffing firms and suppliers who sell to big companies or government. You wait on their payment terms. We are building software to buy those invoices and run the messy middle. This site does not fund invoices today.",
-    cta: "Talk to the founder",
-    note: "Research call, not an application.",
+      "Mozart helps staffing firms and suppliers request invoice funding through established factoring partners. Send an invoice and your customer list so we can see if there's a fit. We aim for a straight answer on terms this week.",
+    primaryCta: "Get a quote — 3 minutes",
+    secondaryCta: "Book a 20-minute call",
+    note: "Mozart works with established factoring partners to fund invoices today, and is building its own funding. Either way, you get a straight answer this week. We do not advance funds ourselves yet.",
     chips: [
       {
         k: "Staffing",
@@ -60,23 +63,23 @@ export const COPY = {
         v: "You delivered. Their payment team still hasn't paid.",
       },
       {
-        k: "Honest status",
-        v: "Building the system. No live funding from this page.",
+        k: "Flexible with partners",
+        v: "No long-term lock-in required with partners we work with — confirm on your quote. You choose which invoices to send.",
       },
     ],
   },
   problem: {
     title: "The gap is timing, not whether you did the work.",
-    body: "If you staff warehouses or ship to a big buyer, you often finish the job long before cash hits your account. Someone is already covering that wait: your own cash, a bank line, or a factor. Mozart is being built for that wait. Not as a bank account, and not as a marketplace of random lenders.",
-    boundary:
-      "If you need money on an invoice this week, this is not the place. If you run this cash cycle and want to talk while the product is still being shaped, that is the conversation.",
+    body: "If you staff warehouses or ship to a big buyer, you often finish the job long before cash hits your account. Invoice factoring is how many operators close that gap: a finance company may purchase the receivable and collect from your customer when they pay. You keep operating. They keep their terms.",
+    explain:
+      "Someone is already covering that wait — your own cash, a bank line, or a factor. Mozart helps arrange that conversation around the customer who owes you, then walks through whether a partner is a fit — without requiring a long-term lock-in up front. Confirm structure on your quote.",
   },
   who: {
     title: "Built for two kinds of businesses.",
     staffingLabel: "Staffing firms",
     staffingTitle: "Weekly payroll. Slow-paying clients.",
     staffingBody:
-      "Wages go out on a clock. Hospitals, warehouses, and other clients often pay in 30, 45, or 60 days. Mozart is being designed around timesheets and that weekly cycle.",
+      "Wages go out on a clock. Hospitals, warehouses, and other clients often pay in 30, 45, or 60 days. Mozart is built around timesheets and that weekly cycle.",
     staffingPoints: [
       "The invoice should match hours actually worked.",
       "The customer who pays is usually a bigger company, not a consumer.",
@@ -91,63 +94,131 @@ export const COPY = {
       "Paper trail: purchase order, invoice, delivery or acceptance.",
       "Cash is late because of process, not because the shipment is disputed.",
     ],
+    notAFit:
+      "Usually not a fit: consumer receivables, construction retainage, invoices already in dispute, or businesses looking for a loan against equipment or personal credit.",
   },
   how: {
-    title: "Four steps. This website stops before money moves.",
+    title: "Four steps. We arrange; partners fund.",
     intro:
-      "This is the product we are building. It is a design plan, not a promise that funding is live.",
+      "Send us an invoice and who owes you. We look at the customer, walk through whether a partner is a fit, and — if you proceed — the partner handles funding and collection.",
     steps: [
       {
         n: "01",
-        title: "Check the invoice is real",
-        body: "Pull the invoice and match it to the work: timesheet for staffing, purchase order and delivery for suppliers.",
+        title: "Send an invoice and your customer list",
+        body: "A recent invoice plus the buyers you want to discuss. That's enough to start a terms request.",
       },
       {
         n: "02",
-        title: "Review the credit",
-        body: "Score the risk. A person still has to approve. This site does not auto-approve or send advances.",
+        title: "We underwrite your customer, not you",
+        body: "Credit is about who owes the invoice — the hospital, warehouse, or agency — not your personal FICO. Stronger payers are usually easier to place.",
       },
       {
         n: "03",
-        title: "Run the book after purchase",
-        body: "Hold reserves, apply cash when the customer pays, keep a collections calendar. This is ongoing ops, not a one-time wire.",
+        title: "Walk through terms before you sign",
+        body: "If there's a fit, we'll walk through a range — how a partner might advance, what they charge, and who we'd introduce. Confirm everything on your quote. Not a priced offer from this page.",
       },
       {
         n: "04",
-        title: "Collect from the customer who owes you",
-        body: "They pay the invoice. Closing that loop is how the book stays healthy.",
+        title: "Partner funds, then collects from your customer",
+        body: "If you accept a partner's terms, that partner advances against the invoice. When your customer pays, the partner reconciles the reserve and their fee. Mozart does not advance funds itself.",
+      },
+    ],
+    debtorNote:
+      "Your customer will typically be notified to pay the factor instead of you. That's how factoring usually works, and most enterprise AP teams already do it. We'll tell you how notice typically looks before anything is sent.",
+  },
+  costs: {
+    title: "What it costs",
+    body: "Fees and advance rates depend on your customers' credit, how fast they pay, and the partner factor. We'll walk through a real range on the call or quote request — we don't publish a one-size number here.",
+    extras:
+      "No long-term lock-in required with partners we work with — confirm on your quote. You choose which invoices to discuss.",
+  },
+  different: {
+    title: "Why we're different",
+    points: [
+      {
+        k: "We underwrite your customer, not you",
+        v: "The credit that matters is the company that owes the invoice.",
+      },
+      {
+        k: "Pick which invoices",
+        v: "No requirement to send your whole book. Confirm volume expectations on your quote.",
+      },
+      {
+        k: "See if there's a fit before you sign",
+        v: "We'll walk through a range and who we'd introduce — not a one-click priced offer.",
       },
     ],
   },
-  what: {
-    isTitle: "What it is",
-    isBody:
-      "Software-shaped invoice factoring for US B2B invoices in staffing and supplier verticals. Built first as underwriting and servicing ops.",
-    isntTitle: "What it isn't",
-    isntBody:
-      "Not a live funder from this website. Not a lender marketplace. Not a bank line with a new logo.",
-    claimTitle: "What we will not claim here",
-    claimBody:
-      "No customer counts, no dollars funded, no loss rates. Those numbers do not exist yet. This site will not invent them.",
+  faq: {
+    title: "Questions people actually ask",
+    items: [
+      {
+        q: "What does it cost?",
+        a: "Fees and advance rates depend on your customers' credit, how fast they pay, and the partner factor. We'll walk through a real range on the call or quote request — we don't publish a one-size number here.",
+      },
+      {
+        q: "Do I have to factor everything?",
+        a: "Usually no. You pick which invoices and which customers to discuss. Volume expectations vary by partner — confirm on your quote.",
+      },
+      {
+        q: "Is this a loan?",
+        a: "Factoring is typically structured as a purchase of receivables, not a loan. Structure varies by partner and state — confirm on your quote.",
+      },
+      {
+        q: "Will my customer know?",
+        a: "Usually yes — they are asked to pay the factor instead of you. Enterprise and government AP teams do this routinely. We'll show you how notice typically looks before it goes out.",
+      },
+      {
+        q: "What do you need from me?",
+        a: "Company details, a recent invoice, your top customers, current payment terms, and typical days-to-pay. The form takes about three minutes. Bank logins and a full partner application come later, only if you want to proceed.",
+      },
+      {
+        q: "Does Mozart fund invoices itself?",
+        a: "No. We do not advance funds ourselves. Mozart works with established factoring partners today and is building its own book. We aim for a straight answer this week on whether there's a fit.",
+      },
+    ],
+  },
+  talk: {
+    title: "See if your invoices are a fit",
+    body: "Request terms in about three minutes, or book twenty minutes with the founder. We aim for a straight answer this week — not a teaser rate and not a commitment to fund.",
+    primaryCta: "Get a quote",
+    secondaryCta: "Book 20 minutes",
+  },
+  quote: {
+    title: "Request terms",
+    lede: "One screen. About three minutes.",
+    body: "This form emails a terms request to parth@mozart.financial so we can see if there's a fit. It is not a live credit decision, not a priced offer, and not a commitment to fund.",
+    submit: "Send terms request",
+    successTitle: "Request sent.",
+    success:
+      "We aim to reply this week with whether there's a fit, or a clear no. If you'd rather talk it through, book twenty minutes.",
+  },
+  partners: {
+    title: "Partners",
+    intro:
+      "Mozart helps arrange invoice funding through commercial finance companies today, and is building its own book. Two kinds of partners matter. We do not list partner brands here.",
+    factorTitle: "Factor partners",
+    factorBody:
+      "If you purchase B2B receivables and want staffing or supplier paper — timesheet-backed invoices, enterprise or government buyers — we originate and introduce those relationships. Text-only for now; we do not publish partner names or logos without permission.",
+    channelTitle: "Channel partners",
+    channelBody:
+      "Staffing networks, PE-backed platforms, accountants, and referral sources who see clients waiting 30–60 days to get paid. If that is your book, we want the conversation. Commercial terms go in writing — nothing on this page is a placement-fee schedule.",
+    cta: "Talk to the founder about a partnership",
   },
   thesis: {
     title: "Why the hard part is the operating loop.",
     p1: "Invoice factoring is simple to say: you have a solid unpaid invoice, you need cash before the customer pays, someone buys the invoice at an advance. The hard part is everything in between. A lot of that work still lives in inboxes, PDFs, and people.",
     p2: "Mozart is building that loop with AI in the ops layer first: read the invoice, match it to the work, score the credit, keep a human gate, then service reserves and collections. The goal is to run the book at software-like cost while the product stays backed by real invoices.",
   },
-  talk: {
-    title: "Talk to the founder. Research call, not an application.",
-    body: "If you run a staffing firm, or you supply enterprise or government, and unpaid invoices are a real constraint, we want that conversation. Early access means a research call. We will not fund an invoice from this page.",
-    ctaPrefix: "Email Parth",
-  },
   footer: {
     disclaimer:
-      "Mozart is in research / early access. Nothing on this site is an offer to buy invoices, extend credit, or fund receivables. No live advances from this page.",
+      "Mozart helps arrange invoice funding through established commercial finance partners. We do not advance funds ourselves. Terms vary by partner, customer credit, and state. Nothing on this site is a commitment to purchase invoices or extend credit.",
   },
 } as const;
 
 export const ONE_LINER =
-  "Mozart is building invoice factoring for staffing firms and suppliers who sell to big companies or government.";
+  "Invoice factoring for staffing firms and suppliers. Request terms through established factoring partners.";
 
+export const META_TITLE = "Invoice Factoring for Staffing Firms & Suppliers | Mozart";
 export const META_DESCRIPTION =
-  "Mozart is building invoice factoring for staffing firms and suppliers who sell to big companies or government. Research stage. This site does not fund invoices today.";
+  "Invoice factoring for staffing firms and suppliers. Request terms through commercial finance partners — we aim for a straight answer this week. Mozart does not advance funds itself.";

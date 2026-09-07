@@ -8,10 +8,10 @@ Two surfaces share one Next.js App Router app:
 
 | Surface | Routes | Purpose |
 | --- | --- | --- |
-| **Marketing** | `/`, `/thesis`, `/privacy` | Public early-access site for `mozart.financial` |
+| **Marketing** | `/`, `/quote`, `/partners`, `/privacy` (`/thesis` kept, not in public nav) | Public customer site for `mozart.financial` |
 | **Ops desk** | `/desk`, `/demo`, plus onboarding / verification / credit / servicing | Phase 1 scaffold: typed domain models, mock integrations, walkable demo |
 
-**NO LIVE FUNDING** on either surface. Credit v1 is shadow / recommend-only. A human must approve before any invoice can sit in `READY_TO_FUND`. There is no ACH, lockbox, or payout ledger. The marketing site is research-stage and does not take applications that fund.
+**NO LIVE FUNDING** on either surface. Credit v1 is shadow / recommend-only. A human must approve before any invoice can sit in `READY_TO_FUND`. There is no ACH, lockbox, or payout ledger. The marketing site takes emailed terms requests; Mozart does not advance funds itself.
 
 ## Setup
 
@@ -60,8 +60,8 @@ Documented in [docs/marketing.md](docs/marketing.md). Short version:
 | Variable | Default | Role |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | `https://mozart.financial` | Canonical URL / sitemap |
-| `NEXT_PUBLIC_FOUNDER_EMAIL` | `parthpahuja@gmail.com` | CTA mailto |
-| `NEXT_PUBLIC_CAL_URL` | unset | If set, CTA becomes “Book a research call” |
+| `NEXT_PUBLIC_FOUNDER_EMAIL` | `parth@mozart.financial` | Public contact / quote inbox |
+| `NEXT_PUBLIC_CAL_URL` | `https://cal.com/parth-mozart/20min` | Book-a-call link (override when the real event exists) |
 
 Deploy the repo root to **Vercel** (Next.js preset). After a `*.vercel.app` URL exists, add `mozart.financial` and `www` in Vercel Domains, then create the records Vercel shows at **Porkbun**. Do not guess IPs — paste what the dashboard prints.
 
@@ -131,7 +131,7 @@ No live vendor API calls and no KYB spend in this build.
 - HITL required before `READY_TO_FUND`
 - accounting + bank required before the fund path would open
 
-The ops banner repeats this on every desk page. The marketing footer repeats that this site does not offer live funding. Do not invent traction or loss metrics.
+The ops banner repeats this on every desk page. The marketing footer uses referral/arranger language: Mozart helps arrange funding through partners and does not advance funds itself. Do not invent traction, licenses, or loss metrics.
 
 ## Next Phase 1 priorities
 

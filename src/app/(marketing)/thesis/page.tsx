@@ -5,6 +5,7 @@ import { COPY } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Thesis",
   description: COPY.thesis.title,
+  robots: { index: false, follow: false },
 };
 
 export default function ThesisPage() {
@@ -19,8 +20,8 @@ export default function ThesisPage() {
         <p>{COPY.thesis.p2}</p>
       </div>
       <p className="mt-14 text-sm text-soot/60">
-        <Link href="/#talk" className="underline decoration-hairline underline-offset-4 hover:text-soot">
-          {COPY.nav.talk}
+        <Link href="/quote" className="underline decoration-hairline underline-offset-4 hover:text-soot">
+          {COPY.nav.quote}
         </Link>
         {" · "}
         <Link href="/" className="underline decoration-hairline underline-offset-4 hover:text-soot">

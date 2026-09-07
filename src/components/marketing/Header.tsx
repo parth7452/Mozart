@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { COPY } from "@/lib/site";
-import { FounderCta } from "./FounderCta";
+import { QuoteCta } from "./FounderCta";
 
 const LINKS = [
   { href: "/#how", label: COPY.nav.how },
   { href: "/#who", label: COPY.nav.who },
+  { href: "/#costs", label: COPY.nav.costs },
 ];
 
 export function MarketingHeader() {
@@ -24,7 +25,7 @@ export function MarketingHeader() {
             </Link>
           ))}
         </nav>
-        <FounderCta className="!px-3.5 !py-1.5 text-[13px]">{COPY.nav.talk}</FounderCta>
+        <QuoteCta className="!px-3.5 !py-1.5 text-[13px]">{COPY.nav.quote}</QuoteCta>
       </div>
       <nav className="flex gap-5 overflow-x-auto border-t border-hairline/70 px-5 py-2 text-[12px] text-soot/70 md:hidden">
         {LINKS.map((l) => (

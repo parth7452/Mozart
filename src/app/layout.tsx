@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import { META_DESCRIPTION, SITE_NAME, siteUrl } from "@/lib/site";
+import { META_DESCRIPTION, META_TITLE, SITE_NAME, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: {
-    default: `${SITE_NAME} — invoice factoring for staffing and suppliers`,
+    default: META_TITLE,
     template: `%s · ${SITE_NAME}`,
   },
   description: META_DESCRIPTION,
