@@ -21,6 +21,7 @@ const serif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
+    default: META_TITLE,
     template: `%s · ${SITE_NAME}`,
   },
   description: META_DESCRIPTION,
