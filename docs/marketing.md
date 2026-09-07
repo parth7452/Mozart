@@ -41,7 +41,7 @@ Public marketing vars are `NEXT_PUBLIC_*` (inlined at build time). Quote deliver
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Recommended in production | Canonical origin for metadata, sitemap, robots. Default: `https://mozart.financial` (or the Vercel production URL if that env is present). |
-| `NEXT_PUBLIC_FOUNDER_EMAIL` | No | Public contact / quote inbox. Default: `parth@mozart.financial`. |
+| `NEXT_PUBLIC_FOUNDER_EMAIL` | No | Public contact / quote inbox. Default: `start@mozart.financial`. |
 | `NEXT_PUBLIC_CAL_URL` | No | Booking link. Default placeholder: `https://cal.com/parth-mozart/20min`. Override when the real event exists. |
 | `RESEND_API_KEY` | No | If set, `/api/quote` emails the lead via Resend. |
 | `RESEND_FROM` | No | Resend from address. Default: `Mozart Quotes <onboarding@resend.dev>` (swap after domain verify). |
@@ -65,7 +65,7 @@ One project, repo root (this is not a monorepo split).
 4. Set env:
    - `DATABASE_URL` — still required for the ops build (Prisma generate). SQLite will not persist on Vercel; use Postgres if you want the desk to work in production. Marketing HTML will still build.
    - `NEXT_PUBLIC_SITE_URL=https://mozart.financial`
-   - `NEXT_PUBLIC_FOUNDER_EMAIL=parth@mozart.financial` if you want to pin the inbox
+   - `NEXT_PUBLIC_FOUNDER_EMAIL=start@mozart.financial` if you want to pin the inbox
    - `NEXT_PUBLIC_CAL_URL` when a real Cal.com event exists
    - `RESEND_API_KEY` (preferred) or `FORMSPREE_FORM_ID` so quote requests actually send
 5. Deploy. Confirm:

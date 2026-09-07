@@ -60,7 +60,7 @@ Documented in [docs/marketing.md](docs/marketing.md). Short version:
 | Variable | Default | Role |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | `https://mozart.financial` | Canonical URL / sitemap |
-| `NEXT_PUBLIC_FOUNDER_EMAIL` | `parth@mozart.financial` | Public contact / quote inbox |
+| `NEXT_PUBLIC_FOUNDER_EMAIL` | `start@mozart.financial` | Public contact / quote inbox |
 | `NEXT_PUBLIC_CAL_URL` | `https://cal.com/parth-mozart/20min` | Book-a-call link (override when the real event exists) |
 
 Deploy the repo root to **Vercel** (Next.js preset). After a `*.vercel.app` URL exists, add `mozart.financial` and `www` in Vercel Domains, then create the records Vercel shows at **Porkbun**. Do not guess IPs — paste what the dashboard prints.

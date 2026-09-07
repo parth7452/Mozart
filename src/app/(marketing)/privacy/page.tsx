@@ -13,7 +13,7 @@ export default function PrivacyPage() {
       <h1 className="mt-4 font-serif text-4xl tracking-tight">Privacy</h1>
       <p className="mt-6 text-[15px] leading-relaxed text-soot/75">
         This is the public marketing site for Mozart, an invoice-factoring arranger for staffing
-        firms and suppliers. The terms-request form emails the founder. It is not a partner
+        firms and suppliers. The terms-request form emails the public inbox. It is not a partner
         underwriting system and it does not collect bank credentials.
       </p>
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
           .
         </li>
         <li>
-          If you email the founder, we see whatever you put in that message (typically your
+          If you email the public inbox, we see whatever you put in that message (typically your
           name, address, and what you chose to write).
         </li>
         <li>

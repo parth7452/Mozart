@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import {
   COPY,
   DEFAULT_CAL_URL,
-  DEFAULT_FOUNDER_EMAIL,
+  DEFAULT_PUBLIC_EMAIL,
   META_DESCRIPTION,
   META_TITLE,
   ONE_LINER,
@@ -55,6 +55,7 @@ const HARD_BANS = [
   "85-95%",
   "cash in a few days",
   "parthpahuja@gmail.com",
+  "parth@mozart.financial",
   "research stage",
   "research-stage",
   "not live funding",
@@ -86,10 +87,10 @@ describe("marketing site config", () => {
     else process.env.NEXT_PUBLIC_CAL_URL = saved.cal;
   });
 
-  it("defaults founder email to parth@mozart.financial", () => {
+  it("defaults public contact to start@mozart.financial", () => {
     delete process.env.NEXT_PUBLIC_FOUNDER_EMAIL;
-    expect(founderEmail()).toBe("parth@mozart.financial");
-    expect(DEFAULT_FOUNDER_EMAIL).toBe("parth@mozart.financial");
+    expect(founderEmail()).toBe("start@mozart.financial");
+    expect(DEFAULT_PUBLIC_EMAIL).toBe("start@mozart.financial");
   });
 
   it("defaults booking to the configurable Cal.com placeholder", () => {

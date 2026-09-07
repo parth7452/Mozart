@@ -10,7 +10,7 @@ import {
   VOLUME_BANDS,
   type QuoteInput,
 } from "@/lib/quote";
-import { COPY } from "@/lib/site";
+import { COPY, founderEmail } from "@/lib/site";
 import { BookCta } from "./FounderCta";
 
 const fieldClass =
@@ -83,12 +83,12 @@ export function QuoteForm() {
         {done.channel === "mailto" ? (
           <p className="mt-4 text-sm leading-relaxed text-soot/55">
             No email provider is configured on this deploy, so your mail app should have opened
-            a message to parth@mozart.financial. If it didn&apos;t, use the founder email in the
+            a message to {founderEmail()}. If it didn&apos;t, use the contact email in the
             footer.
           </p>
         ) : (
           <p className="mt-4 text-sm leading-relaxed text-soot/55">
-            Delivered by email to parth@mozart.financial — not a CRM and not a credit decision.
+            Delivered by email to {founderEmail()} — not a CRM and not a credit decision.
           </p>
         )}
         <div className="mt-8">
@@ -194,7 +194,7 @@ export function QuoteForm() {
           {pending ? "Sending…" : COPY.quote.submit}
         </button>
         <p className="text-xs leading-relaxed text-soot/50">
-          Emailed to parth@mozart.financial. No fake CRM.
+          Emailed to {founderEmail()}. No fake CRM.
         </p>
       </div>
     </form>

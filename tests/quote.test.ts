@@ -47,7 +47,7 @@ describe("quote request", () => {
     const delivery = await deliverQuote(sample);
     expect(delivery.channel).toBe("mailto");
     if (delivery.channel === "mailto") {
-      expect(delivery.mailto).toContain("mailto:parth@mozart.financial");
+      expect(delivery.mailto).toContain("mailto:start@mozart.financial");
       expect(delivery.mailto).toContain("Harborline");
     }
   });

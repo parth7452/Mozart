@@ -2,7 +2,7 @@
 
 export const SITE_NAME = "Mozart";
 export const SITE_DOMAIN = "mozart.financial";
-export const DEFAULT_FOUNDER_EMAIL = "parth@mozart.financial";
+export const DEFAULT_PUBLIC_EMAIL = "start@mozart.financial";
 export const DEFAULT_CAL_URL = "https://cal.com/parth-mozart/20min";
 
 export function siteUrl(): string {
@@ -15,7 +15,7 @@ export function siteUrl(): string {
 }
 
 export function founderEmail(): string {
-  return process.env.NEXT_PUBLIC_FOUNDER_EMAIL?.trim() || DEFAULT_FOUNDER_EMAIL;
+  return process.env.NEXT_PUBLIC_FOUNDER_EMAIL?.trim() || DEFAULT_PUBLIC_EMAIL;
 }
 
 export function calUrl(): string {
@@ -187,7 +187,7 @@ export const COPY = {
   quote: {
     title: "Request terms",
     lede: "One screen.",
-    body: "This form emails a terms request to parth@mozart.financial so we can see if there's a fit. It is not a live credit decision, not a priced offer, and not a commitment to fund.",
+    body: `This form emails a terms request to ${DEFAULT_PUBLIC_EMAIL} so we can see if there's a fit. It is not a live credit decision, not a priced offer, and not a commitment to fund.`,
     submit: "Send terms request",
     successTitle: "Request sent.",
     success:
