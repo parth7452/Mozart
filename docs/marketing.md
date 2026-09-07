@@ -88,7 +88,7 @@ DNS is at **Porkbun**. Do this **after** you have a Vercel deployment URL.
    - Add the records Vercel specified
 4. Wait for propagation. Vercel issues the certificate automatically.
 
-Until DNS is cut over, share the `*.vercel.app` URL. The footer stays referral/arranger language. Do not claim Mozart advances funds.
+Until DNS is cut over, share the `*.vercel.app` URL. Footer is legal Variant A referral/arranger language. Do not claim Mozart advances funds. Do not put 3-minute process claims on CTAs.
 
 ## Privacy / indexing
 

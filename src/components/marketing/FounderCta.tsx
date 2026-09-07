@@ -67,7 +67,7 @@ export function HeroCtaBlock({
   return (
     <div className={`flex flex-col items-start gap-4 ${className}`}>
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <QuoteCta>{primary ?? "Get a quote — 3 minutes"}</QuoteCta>
+        <QuoteCta>{primary ?? "Get a quote"}</QuoteCta>
         <BookCta>{secondary ?? "Book a 20-minute call"}</BookCta>
       </div>
       {note ? <p className="max-w-xl text-sm leading-relaxed text-soot/55">{note}</p> : null}

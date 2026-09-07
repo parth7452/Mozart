@@ -50,7 +50,7 @@ export const COPY = {
     headline: "Payroll is Friday. Your client pays in 45 days.",
     subhead:
       "Mozart helps staffing firms and suppliers request invoice funding through established factoring partners. Send an invoice and your customer list so we can see if there's a fit. We aim for a straight answer on terms this week.",
-    primaryCta: "Get a quote — 3 minutes",
+    primaryCta: "Get a quote",
     secondaryCta: "Book a 20-minute call",
     note: "Mozart works with established factoring partners to fund invoices today, and is building its own funding. Either way, you get a straight answer this week. We do not advance funds ourselves yet.",
     chips: [
@@ -170,7 +170,7 @@ export const COPY = {
       },
       {
         q: "What do you need from me?",
-        a: "Company details, a recent invoice, your top customers, current payment terms, and typical days-to-pay. The form takes about three minutes. Bank logins and a full partner application come later, only if you want to proceed.",
+        a: "Company details, a recent invoice, your top customers, current payment terms, and typical days-to-pay. Bank logins and a full partner application come later, only if you want to proceed.",
       },
       {
         q: "Does Mozart fund invoices itself?",
@@ -180,13 +180,13 @@ export const COPY = {
   },
   talk: {
     title: "See if your invoices are a fit",
-    body: "Request terms in about three minutes, or book twenty minutes with the founder. We aim for a straight answer this week — not a teaser rate and not a commitment to fund.",
+    body: "Request terms, or book twenty minutes with the founder. We aim for a straight answer this week — not a teaser rate and not a commitment to fund.",
     primaryCta: "Get a quote",
     secondaryCta: "Book 20 minutes",
   },
   quote: {
     title: "Request terms",
-    lede: "One screen. About three minutes.",
+    lede: "One screen.",
     body: "This form emails a terms request to parth@mozart.financial so we can see if there's a fit. It is not a live credit decision, not a priced offer, and not a commitment to fund.",
     submit: "Send terms request",
     successTitle: "Request sent.",
@@ -212,7 +212,7 @@ export const COPY = {
   },
   footer: {
     disclaimer:
-      "Mozart helps arrange invoice funding through established commercial finance partners. We do not advance funds ourselves. Terms vary by partner, customer credit, and state. Nothing on this site is a commitment to purchase invoices or extend credit.",
+      "Mozart is a referral partner / arranger to commercial finance and factoring companies. We do not advance funds ourselves. Terms vary by partner, customer credit, and state. Nothing on this site is a commitment to purchase invoices or extend credit.",
   },
 } as const;
 

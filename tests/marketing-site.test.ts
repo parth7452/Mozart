@@ -134,9 +134,11 @@ describe("customer lead-gen copy", () => {
     expect(COPY.hero.headline).toBe("Payroll is Friday. Your client pays in 45 days.");
     expect(COPY.hero.subhead).toContain("request invoice funding");
     expect(COPY.hero.subhead).toContain("straight answer on terms this week");
-    expect(COPY.hero.primaryCta).toBe("Get a quote — 3 minutes");
+    expect(COPY.hero.primaryCta).toBe("Get a quote");
     expect(COPY.hero.secondaryCta).toBe("Book a 20-minute call");
+    expect(COPY.hero.primaryCta.toLowerCase()).not.toContain("3 minute");
     expect(COPY.hero.note).toContain("We do not advance funds ourselves yet.");
+    expect(COPY.hero.note).toContain("straight answer this week");
     expect(COPY.hero.chips.map((c) => c.k)).toEqual([
       "Staffing",
       "Suppliers",
@@ -148,8 +150,9 @@ describe("customer lead-gen copy", () => {
     expect(COPY.how.debtorNote).toMatch(/notified to pay the factor/i);
     expect(COPY.faq.items).toHaveLength(6);
     expect(COPY.faq.items[0].a).toContain("we don't publish a one-size number here");
-    expect(COPY.footer.disclaimer).toContain("helps arrange invoice funding");
-    expect(COPY.footer.disclaimer).toContain("We do not advance funds ourselves.");
+    expect(COPY.footer.disclaimer).toBe(
+      "Mozart is a referral partner / arranger to commercial finance and factoring companies. We do not advance funds ourselves. Terms vary by partner, customer credit, and state. Nothing on this site is a commitment to purchase invoices or extend credit.",
+    );
   });
 
   it("softens loan and lock-in claims", () => {
