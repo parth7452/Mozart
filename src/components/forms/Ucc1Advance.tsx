@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { UCC1_TRANSITIONS, type Ucc1Status } from "@/domain/states";
-import { Button } from "@/components/ui";
+import { Button } from "@/components/desk-ui";
 
 export function Ucc1Advance({ clientId, current }: { clientId: string; current: string }) {
   const router = useRouter();

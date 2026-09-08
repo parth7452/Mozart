@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
+      <body className="min-h-screen font-sans antialiased">
         <ScrollToTop />
         {children}
       </body>

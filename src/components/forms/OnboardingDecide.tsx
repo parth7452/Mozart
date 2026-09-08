@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { ONBOARDING_TRANSITIONS, type OnboardingStatus } from "@/domain/states";
-import { Button, Card } from "@/components/ui";
+import { Button, Card } from "@/components/desk-ui";
 
 export function OnboardingDecide({
   clientId,

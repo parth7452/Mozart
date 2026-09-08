@@ -39,6 +39,8 @@ const CUSTOMER_FILES = [
   "src/components/marketing/Footer.tsx",
   "src/components/marketing/QuoteForm.tsx",
   "src/components/marketing/FounderCta.tsx",
+  "src/components/marketing/FaqList.tsx",
+  "src/components/marketing/Logo.tsx",
   "src/app/layout.tsx",
   "src/app/not-found.tsx",
 ];
@@ -117,6 +119,15 @@ describe("marketing site config", () => {
     }
   });
 
+  it("restores IBM Plex Sans and Instrument Serif on marketing pages", () => {
+    const layout = marketingFile("src/app/(marketing)/layout.tsx");
+    expect(layout).toContain("IBM_Plex_Sans");
+    expect(layout).toContain("Instrument_Serif");
+    expect(layout).toContain("font-marketing");
+    expect(layout).toContain("marketing-zoom");
+    expect(layout).toContain("MarketingHtmlZoom");
+  });
+
   it("uses the approved meta title, description, and twitter card", () => {
     expect(META_TITLE).toBe("Invoice Factoring for Staffing Firms & Suppliers | Mozart");
     expect(META_DESCRIPTION).toContain("Invoice factoring for staffing firms and suppliers");
@@ -138,8 +149,9 @@ describe("customer lead-gen copy", () => {
     expect(COPY.hero.primaryCta).toBe("Get a quote");
     expect(COPY.hero.secondaryCta).toBe("Book a 20-minute call");
     expect(COPY.hero.primaryCta.toLowerCase()).not.toContain("3 minute");
-    expect(COPY.hero.note).toContain("We do not advance funds ourselves yet.");
     expect(COPY.hero.note).toContain("straight answer this week");
+    expect(COPY.hero.note.toLowerCase()).not.toContain("we do not advance");
+    expect(COPY.hero.note.toLowerCase()).not.toContain("ourselves yet");
     expect(COPY.hero.chips.map((c) => c.k)).toEqual([
       "Staffing",
       "Suppliers",
@@ -199,6 +211,7 @@ describe("customer lead-gen copy", () => {
     const home = marketingFile("src/app/(marketing)/page.tsx");
     expect(home).toContain("HeroCtaBlock");
     expect(home).toContain("ClosingCtas");
+    expect(home).toContain("FaqList");
   });
 });
 
@@ -213,8 +226,21 @@ describe("soft compliance bans on customer pages", () => {
   it("does not claim Mozart itself advances or pays out", () => {
     const copy = JSON.stringify(COPY).toLowerCase();
     expect(copy).not.toMatch(/mozart (funds|advances|pays out)/);
-    expect(COPY.hero.note.toLowerCase()).toContain("we do not advance funds ourselves");
     expect(COPY.footer.disclaimer.toLowerCase()).toContain("we do not advance funds ourselves");
+    expect(COPY.faq.items.find((i) => i.q === "Does Mozart fund invoices itself?")?.a.toLowerCase()).toContain(
+      "we do not advance funds ourselves",
+    );
+  });
+
+  it("keeps advance-funds language in footer and FAQ only, not hero or how-it-works", () => {
+    expect(COPY.hero.note.toLowerCase()).not.toMatch(/do not advance|does not advance|ourselves yet/);
+    expect(COPY.hero.subhead.toLowerCase()).not.toMatch(/do not advance|does not advance|ourselves yet/);
+    expect(COPY.how.intro.toLowerCase()).not.toMatch(/do not advance|does not advance|ourselves yet/);
+    expect(COPY.how.steps.map((s) => s.body).join(" ").toLowerCase()).not.toMatch(
+      /do not advance|does not advance|ourselves yet/,
+    );
+    expect(COPY.talk.body.toLowerCase()).not.toMatch(/do not advance|does not advance|ourselves yet/);
+    expect(COPY.footer.disclaimer).toContain("We do not advance funds ourselves.");
   });
 
   it("does not use an absolute not-a-loan or no-long-term-contract blanket", () => {

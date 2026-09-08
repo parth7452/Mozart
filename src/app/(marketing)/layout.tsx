@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { IBM_Plex_Sans, Instrument_Serif } from "next/font/google";
 import { MarketingFooter } from "@/components/marketing/Footer";
 import { MarketingHeader } from "@/components/marketing/Header";
+import { MarketingHtmlZoom } from "@/components/marketing/HtmlZoom";
 import { META_DESCRIPTION, META_TITLE, SITE_NAME } from "@/lib/site";
 
 const sans = IBM_Plex_Sans({
@@ -41,10 +42,16 @@ export const metadata: Metadata = {
 export default function MarketingLayout({ children }: { children: ReactNode }) {
   return (
     <div
-      className={`${sans.variable} ${serif.variable} min-h-screen bg-stone font-marketing text-soot`}
+      className={`${sans.variable} ${serif.variable} marketing-zoom flex min-h-screen flex-col overflow-x-clip bg-background font-marketing text-foreground`}
     >
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.documentElement.classList.add("marketing-zoom");`,
+        }}
+      />
+      <MarketingHtmlZoom />
       <MarketingHeader />
-      <main>{children}</main>
+      <main className="min-w-0 flex-1">{children}</main>
       <MarketingFooter />
     </div>
   );

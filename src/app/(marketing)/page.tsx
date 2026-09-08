@@ -1,10 +1,28 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import {
+  Building2,
+  Check,
+  FileText,
+  Handshake,
+  ListFilter,
+  Package,
+  ScanSearch,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 import { ClosingCtas, HeroCtaBlock } from "@/components/marketing/FounderCta";
+import { FaqList } from "@/components/marketing/FaqList";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { COPY, META_TITLE } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: { absolute: META_TITLE },
 };
+
+const STEP_ICONS = [FileText, ShieldCheck, Handshake, Building2];
 
 export default function MarketingHome() {
   return (
@@ -21,214 +39,256 @@ export default function MarketingHome() {
   );
 }
 
-function Hero() {
+function Section({
+  id,
+  muted,
+  className,
+  children,
+}: {
+  id?: string;
+  muted?: boolean;
+  className?: string;
+  children: ReactNode;
+}) {
   return (
-    <section className="relative overflow-hidden border-b border-hairline">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.28]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(20,18,16,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(20,18,16,0.06) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
-      <div className="relative mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28 lg:py-32">
-        <h1 className="max-w-[16ch] font-serif text-[2.35rem] leading-[1.15] tracking-tight text-soot sm:text-5xl lg:text-[3.35rem]">
-          {COPY.hero.headline}
-        </h1>
-        <p className="mt-7 max-w-xl text-base leading-relaxed text-soot/70 sm:text-[17px]">
-          {COPY.hero.subhead}
-        </p>
-        <HeroCtaBlock
-          className="mt-10"
-          note={COPY.hero.note}
-          primary={COPY.hero.primaryCta}
-          secondary={COPY.hero.secondaryCta}
-        />
-      </div>
-      <ClarityBar />
+    <section
+      id={id}
+      className={cn(
+        "border-b",
+        muted ? "bg-muted/60" : "bg-background",
+        id ? "scroll-mt-20" : undefined,
+        className,
+      )}
+    >
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8 lg:py-28">{children}</div>
     </section>
   );
 }
 
-function ClarityBar() {
+function Hero() {
   return (
-    <div className="relative border-t border-hairline bg-stone">
-      <dl className="mx-auto grid max-w-5xl gap-10 px-5 py-12 sm:px-8 sm:py-14 md:grid-cols-3 md:gap-12">
-        {COPY.hero.chips.map((chip) => (
-          <div key={chip.k} className="max-w-xs">
-            <dt className="font-serif text-xl tracking-tight text-soot">{chip.k}</dt>
-            <dd className="mt-2 max-w-[28ch] text-sm leading-relaxed text-soot/70">{chip.v}</dd>
-          </div>
-        ))}
-      </dl>
-    </div>
+    <section className="border-b bg-background">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-12 sm:gap-12 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:px-8 lg:py-28">
+        <div className="min-w-0">
+          <Badge variant="secondary" className="whitespace-normal text-left">
+            Invoice factoring for staffing & suppliers
+          </Badge>
+          <h1 className="mt-5 max-w-[16ch] font-serif text-[2rem] font-normal leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl lg:leading-[1.08]">
+            {COPY.hero.headline}
+          </h1>
+          <p className="mt-5 max-w-xl text-[0.9375rem] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
+            {COPY.hero.subhead}
+          </p>
+          <HeroCtaBlock
+            className="mt-8 sm:mt-10"
+            note={COPY.hero.note}
+            primary={COPY.hero.primaryCta}
+            secondary={COPY.hero.secondaryCta}
+          />
+        </div>
+        <div className="grid min-w-0 gap-3 sm:gap-4">
+          {COPY.hero.chips.map((chip) => (
+            <Card key={chip.k} className="min-w-0">
+              <CardHeader className="pb-3">
+                <CardTitle className="font-serif text-lg font-normal sm:text-xl">{chip.k}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm leading-relaxed">{chip.v}</CardDescription>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
 function Problem() {
   return (
-    <section className="border-b border-hairline">
-      <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="max-w-xl">
-          <h2 className="max-w-[18ch] font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
-            {COPY.problem.title}
-          </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-soot/75">{COPY.problem.body}</p>
-          <p className="mt-8 border-l-2 border-brass/50 pl-5 text-[15px] leading-relaxed text-soot/70">
-            {COPY.problem.explain}
-          </p>
-        </div>
+    <Section muted>
+      <div className="max-w-2xl">
+        <h2 className="max-w-[18ch] font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl">
+          {COPY.problem.title}
+        </h2>
+        <p className="mt-6 text-[0.9375rem] leading-relaxed text-muted-foreground">{COPY.problem.body}</p>
+        <p className="mt-8 border-l-2 border-primary/40 pl-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+          {COPY.problem.explain}
+        </p>
       </div>
-    </section>
+    </Section>
   );
 }
 
 function Who() {
   return (
-    <section id="who" className="scroll-mt-24 border-b border-hairline bg-[#EFE8DA]/50">
-      <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
-        <h2 className="max-w-[16ch] font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
-          {COPY.who.title}
-        </h2>
-        <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:gap-14">
-          <article className="max-w-md">
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-ledger">
-              {COPY.who.staffingLabel}
-            </p>
-            <h3 className="mt-3 font-serif text-2xl leading-snug tracking-tight">
-              {COPY.who.staffingTitle}
-            </h3>
-            <p className="mt-4 text-[15px] leading-relaxed text-soot/75">{COPY.who.staffingBody}</p>
-            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-soot/70">
+    <Section id="who">
+      <h2 className="max-w-[16ch] font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl">
+        {COPY.who.title}
+      </h2>
+      <div className="mt-10 grid min-w-0 gap-5 sm:mt-12 lg:grid-cols-2">
+        <Card className="min-w-0">
+          <CardHeader>
+            <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-md bg-muted">
+              <Users className="h-5 w-5 text-primary" />
+            </div>
+            <Badge variant="muted">{COPY.who.staffingLabel}</Badge>
+            <CardTitle className="pt-2 font-serif text-xl font-normal">{COPY.who.staffingTitle}</CardTitle>
+            <CardDescription className="text-[0.9375rem] leading-relaxed">
+              {COPY.who.staffingBody}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
               {COPY.who.staffingPoints.map((point) => (
                 <li key={point} className="flex gap-3">
-                  <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass" />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
-          </article>
-          <article className="max-w-md">
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-ledger">
-              {COPY.who.supplierLabel}
-            </p>
-            <h3 className="mt-3 font-serif text-2xl leading-snug tracking-tight">
-              {COPY.who.supplierTitle}
-            </h3>
-            <p className="mt-4 text-[15px] leading-relaxed text-soot/75">{COPY.who.supplierBody}</p>
-            <ul className="mt-6 space-y-3 text-sm leading-relaxed text-soot/70">
+          </CardContent>
+        </Card>
+        <Card className="min-w-0">
+          <CardHeader>
+            <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-md bg-muted">
+              <Package className="h-5 w-5 text-primary" />
+            </div>
+            <Badge variant="muted">{COPY.who.supplierLabel}</Badge>
+            <CardTitle className="pt-2 font-serif text-xl font-normal">{COPY.who.supplierTitle}</CardTitle>
+            <CardDescription className="text-[0.9375rem] leading-relaxed">
+              {COPY.who.supplierBody}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
               {COPY.who.supplierPoints.map((point) => (
                 <li key={point} className="flex gap-3">
-                  <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass" />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
-          </article>
-        </div>
-        <p className="mt-12 max-w-2xl text-xs leading-relaxed text-soot/50">{COPY.who.notAFit}</p>
+          </CardContent>
+        </Card>
       </div>
-    </section>
+      <p className="mt-8 max-w-2xl text-xs leading-relaxed text-muted-foreground sm:mt-10">
+        {COPY.who.notAFit}
+      </p>
+    </Section>
   );
 }
 
 function How() {
   return (
-    <section id="how" className="scroll-mt-24 border-b border-hairline">
-      <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="max-w-xl">
-          <h2 className="max-w-[18ch] font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
-            {COPY.how.title}
-          </h2>
-          <p className="mt-5 text-[15px] leading-relaxed text-soot/70">{COPY.how.intro}</p>
-        </div>
-        <ol className="mt-16 max-w-2xl space-y-12">
-          {COPY.how.steps.map((step, index) => (
-            <li key={step.n} className="grid gap-3 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-8">
-              <span className="font-serif text-2xl text-brass">{step.n}</span>
-              <div className="max-w-md">
-                <h3 className="font-serif text-2xl leading-snug tracking-tight">{step.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-soot/70">{step.body}</p>
-                {index === COPY.how.steps.length - 1 ? (
-                  <p className="mt-4 text-sm leading-relaxed text-soot/55">{COPY.how.debtorNote}</p>
-                ) : null}
-              </div>
-            </li>
-          ))}
-        </ol>
+    <Section id="how" muted>
+      <div className="max-w-2xl">
+        <h2 className="max-w-[18ch] font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl">
+          {COPY.how.title}
+        </h2>
+        <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">{COPY.how.intro}</p>
       </div>
-    </section>
+      <ol className="mt-10 grid min-w-0 gap-4 sm:mt-12 md:grid-cols-2">
+        {COPY.how.steps.map((step, index) => {
+          const Icon = STEP_ICONS[index] ?? FileText;
+          return (
+            <li key={step.n} className="min-w-0">
+              <Card className="h-full min-w-0">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-sm font-medium text-primary-foreground">
+                      {step.n}
+                    </span>
+                    <Icon className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                  <CardTitle className="pt-2 font-serif text-lg font-normal">{step.title}</CardTitle>
+                  <CardDescription className="text-[0.9375rem] leading-relaxed">{step.body}</CardDescription>
+                </CardHeader>
+                {index === COPY.how.steps.length - 1 ? (
+                  <CardContent>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{COPY.how.debtorNote}</p>
+                  </CardContent>
+                ) : null}
+              </Card>
+            </li>
+          );
+        })}
+      </ol>
+    </Section>
   );
 }
 
 function Costs() {
   return (
-    <section id="costs" className="scroll-mt-24 border-b border-hairline bg-[#EFE8DA]/50">
-      <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="max-w-xl">
-          <h2 className="max-w-[16ch] font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
+    <Section id="costs">
+      <Card className="max-w-2xl">
+        <CardHeader>
+          <CardTitle className="font-serif text-3xl font-normal tracking-tight sm:text-4xl">
             {COPY.costs.title}
-          </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-soot/75">{COPY.costs.body}</p>
-          <p className="mt-6 text-sm leading-relaxed text-soot/55">{COPY.costs.extras}</p>
-        </div>
-      </div>
-    </section>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">{COPY.costs.body}</p>
+          <p className="text-sm leading-relaxed text-muted-foreground">{COPY.costs.extras}</p>
+        </CardContent>
+      </Card>
+    </Section>
   );
 }
 
 function Different() {
+  const icons = [ScanSearch, ListFilter, Handshake];
   return (
-    <section className="border-b border-hairline">
-      <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
-        <h2 className="max-w-[16ch] font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
-          {COPY.different.title}
-        </h2>
-        <dl className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
-          {COPY.different.points.map((point) => (
-            <div key={point.k} className="max-w-xs">
-              <dt className="font-serif text-xl tracking-tight">{point.k}</dt>
-              <dd className="mt-3 text-[15px] leading-relaxed text-soot/70">{point.v}</dd>
-            </div>
-          ))}
-        </dl>
+    <Section muted>
+      <h2 className="max-w-[16ch] font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl">
+        {COPY.different.title}
+      </h2>
+      <div className="mt-10 grid min-w-0 gap-4 sm:mt-12 md:grid-cols-3">
+        {COPY.different.points.map((point, index) => {
+          const Icon = icons[index] ?? ScanSearch;
+          return (
+            <Card key={point.k} className="min-w-0">
+              <CardHeader>
+                <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-md bg-muted">
+                  <Icon className="h-4 w-4 text-primary" />
+                </div>
+                <CardTitle className="font-serif text-base font-normal sm:text-lg">{point.k}</CardTitle>
+                <CardDescription className="text-[0.9375rem] leading-relaxed">{point.v}</CardDescription>
+              </CardHeader>
+            </Card>
+          );
+        })}
       </div>
-    </section>
+    </Section>
   );
 }
 
 function Faq() {
   return (
-    <section className="border-b border-hairline">
-      <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
-        <h2 className="max-w-[16ch] font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
+    <Section>
+      <div className="mx-auto max-w-3xl">
+        <h2 className="max-w-[16ch] font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl">
           {COPY.faq.title}
         </h2>
-        <dl className="mt-14 max-w-2xl space-y-10">
-          {COPY.faq.items.map((item) => (
-            <div key={item.q}>
-              <dt className="font-serif text-xl tracking-tight">{item.q}</dt>
-              <dd className="mt-3 text-[15px] leading-relaxed text-soot/70">{item.a}</dd>
-            </div>
-          ))}
-        </dl>
+        <div className="mt-8 sm:mt-10">
+          <FaqList />
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }
 
 function Talk() {
   return (
-    <section id="talk" className="scroll-mt-24">
-      <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="bg-ledger px-6 py-14 text-stone sm:px-12 sm:py-16">
-          <h2 className="max-w-md font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
+    <section id="talk" className="scroll-mt-20">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+        <div className="rounded-2xl bg-primary px-5 py-10 text-primary-foreground sm:px-12 sm:py-16">
+          <h2 className="max-w-md font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl">
             {COPY.talk.title}
           </h2>
-          <p className="mt-6 max-w-md text-[15px] leading-relaxed text-stone/70">{COPY.talk.body}</p>
-          <div className="mt-10">
+          <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-primary-foreground/70 sm:mt-6">
+            {COPY.talk.body}
+          </p>
+          <div className="mt-8 sm:mt-10">
             <ClosingCtas primary={COPY.talk.primaryCta} secondary={COPY.talk.secondaryCta} />
           </div>
         </div>

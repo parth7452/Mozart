@@ -1,54 +1,59 @@
 import Link from "next/link";
+import { Button, type ButtonProps } from "@/components/ui/button";
 import { bookCallHref, quoteHref } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "ghost" | "brass";
-
-const styles: Record<Variant, string> = {
-  primary:
-    "bg-ledger text-stone hover:bg-ledger/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ledger",
-  ghost:
-    "border border-soot/20 bg-transparent text-soot hover:border-soot/40 hover:bg-soot/[0.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-soot",
-  brass:
-    "bg-brass text-stone hover:bg-brass/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass",
-};
-
-const base =
-  "inline-flex items-center justify-center rounded-sm px-5 py-2.5 text-sm font-medium tracking-wide";
+const mobileCta = "h-11 w-full min-h-11 px-5 sm:w-auto";
 
 export function QuoteCta({
-  variant = "primary",
+  variant = "default",
+  size = "lg",
   className = "",
   children,
+  onNavigate,
 }: {
-  variant?: Variant;
+  variant?: ButtonProps["variant"];
+  size?: ButtonProps["size"];
   className?: string;
   children?: string;
+  onNavigate?: () => void;
 }) {
   return (
-    <Link href={quoteHref()} className={`${base} ${styles[variant]} ${className}`}>
-      {children ?? "Get a quote"}
-    </Link>
+    <Button
+      asChild
+      variant={variant}
+      size={size}
+      className={cn(size !== "sm" && mobileCta, className)}
+    >
+      <Link href={quoteHref()} onClick={onNavigate}>
+        {children ?? "Get a quote"}
+      </Link>
+    </Button>
   );
 }
 
 export function BookCta({
-  variant = "ghost",
+  variant = "outline",
+  size = "lg",
   className = "",
   children,
 }: {
-  variant?: Variant;
+  variant?: ButtonProps["variant"];
+  size?: ButtonProps["size"];
   className?: string;
   children?: string;
 }) {
   return (
-    <a
-      href={bookCallHref()}
-      target="_blank"
-      rel="noreferrer"
-      className={`${base} ${styles[variant]} ${className}`}
+    <Button
+      asChild
+      variant={variant}
+      size={size}
+      className={cn(mobileCta, "h-auto min-h-11 whitespace-normal py-2.5 text-center", className)}
     >
-      {children ?? "Book a 20-minute call"}
-    </a>
+      <a href={bookCallHref()} target="_blank" rel="noreferrer">
+        {children ?? "Book a 20-minute call"}
+      </a>
+    </Button>
   );
 }
 
@@ -65,12 +70,12 @@ export function HeroCtaBlock({
   secondary?: string;
 }) {
   return (
-    <div className={`flex flex-col items-start gap-4 ${className}`}>
-      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+    <div className={cn("flex w-full flex-col items-stretch gap-4 sm:items-start", className)}>
+      <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
         <QuoteCta>{primary ?? "Get a quote"}</QuoteCta>
         <BookCta>{secondary ?? "Book a 20-minute call"}</BookCta>
       </div>
-      {note ? <p className="max-w-xl text-sm leading-relaxed text-soot/55">{note}</p> : null}
+      {note ? <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">{note}</p> : null}
     </div>
   );
 }
@@ -83,11 +88,11 @@ export function ClosingCtas({
   secondary?: string;
 }) {
   return (
-    <div className="flex flex-col gap-3 sm:flex-row">
-      <QuoteCta variant="brass">{primary ?? "Get a quote"}</QuoteCta>
+    <div className="flex w-full flex-col gap-3 sm:flex-row">
+      <QuoteCta variant="secondary">{primary ?? "Get a quote"}</QuoteCta>
       <BookCta
-        variant="ghost"
-        className="border-stone/30 text-stone hover:border-stone/50 hover:bg-stone/5"
+        variant="outline"
+        className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
       >
         {secondary ?? "Book 20 minutes"}
       </BookCta>

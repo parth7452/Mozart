@@ -1,73 +1,72 @@
 import Link from "next/link";
 import { COPY, founderEmail, founderMailto, SITE_DOMAIN } from "@/lib/site";
+import { Separator } from "@/components/ui/separator";
+import { MozartWordmark } from "./Logo";
 
 export function MarketingFooter() {
   return (
-    <footer className="border-t border-hairline bg-ledger text-stone">
-      <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8">
-        <div className="grid gap-12 md:grid-cols-[1.3fr_1fr_1fr]">
-          <div>
-            <div className="font-serif text-2xl tracking-tight">Mozart</div>
-            <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-stone/55">
+    <footer className="border-t bg-primary text-primary-foreground">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div className="min-w-0">
+            <MozartWordmark inverse />
+            <p className="mt-3 text-sm text-primary-foreground/70">
               Invoice factoring · {SITE_DOMAIN}
             </p>
           </div>
           <div>
-            <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone/50">
-              Site
-            </div>
-            <ul className="mt-3 space-y-2 text-sm text-stone/80">
+            <div className="text-sm font-medium">Site</div>
+            <ul className="mt-3 space-y-2.5 text-sm text-primary-foreground/80">
               <li>
-                <Link href="/#how" className="hover:text-stone">
+                <Link href="/#how" className="hover:text-primary-foreground">
                   {COPY.nav.how}
                 </Link>
               </li>
               <li>
-                <Link href="/#who" className="hover:text-stone">
+                <Link href="/#who" className="hover:text-primary-foreground">
                   {COPY.nav.who}
                 </Link>
               </li>
               <li>
-                <Link href="/#costs" className="hover:text-stone">
+                <Link href="/#costs" className="hover:text-primary-foreground">
                   {COPY.nav.costs}
                 </Link>
               </li>
               <li>
-                <Link href="/quote" className="hover:text-stone">
+                <Link href="/quote" className="hover:text-primary-foreground">
                   {COPY.nav.quote}
                 </Link>
               </li>
               <li>
-                <Link href="/partners" className="hover:text-stone">
+                <Link href="/partners" className="hover:text-primary-foreground">
                   Partners
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-stone">
+                <Link href="/privacy" className="hover:text-primary-foreground">
                   Privacy
                 </Link>
               </li>
             </ul>
           </div>
-          <div>
-            <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone/50">
-              Contact
-            </div>
-            <ul className="mt-3 space-y-2 text-sm text-stone/80">
+          <div className="min-w-0">
+            <div className="text-sm font-medium">Contact</div>
+            <ul className="mt-3 space-y-2.5 text-sm text-primary-foreground/80">
               <li>
-                <a href={founderMailto("Mozart — founder")} className="hover:text-stone">
+                <a href={founderMailto("Mozart — founder")} className="hover:text-primary-foreground">
                   {COPY.nav.founder}
                 </a>
               </li>
-              <li>
-                <a href={`mailto:${founderEmail()}`} className="hover:text-stone">
+              <li className="break-all">
+                <a href={`mailto:${founderEmail()}`} className="hover:text-primary-foreground">
                   {founderEmail()}
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <p className="mt-14 max-w-2xl border-t border-stone/15 pt-8 text-xs leading-relaxed text-stone/55">
+        <Separator className="mt-10 bg-primary-foreground/15" />
+        <p className="mt-6 max-w-3xl text-xs leading-relaxed text-primary-foreground/60">
           {COPY.footer.disclaimer}
         </p>
       </div>

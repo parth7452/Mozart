@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Button, Card } from "@/components/ui";
+import { Button, Card } from "@/components/desk-ui";
 
 const ADAPTERS = [
   { kind: "PLAID", label: "Plaid (bank)" },

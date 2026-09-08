@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Button, Card } from "@/components/ui";
+import { Button, Card } from "@/components/desk-ui";
 
 export function InvoiceActions({ invoiceId }: { invoiceId: string }) {
   const router = useRouter();

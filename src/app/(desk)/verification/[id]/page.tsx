@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Badge, Card, PageShell } from "@/components/ui";
+import { Badge, Card, PageShell } from "@/components/desk-ui";
 import { InvoiceActions } from "@/components/forms/InvoiceActions";
 import { money } from "@/lib/format";
 import { findDuplicates, getInvoice } from "@/server/invoices";

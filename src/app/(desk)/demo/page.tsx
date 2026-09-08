@@ -1,4 +1,4 @@
-import { PageShell } from "@/components/ui";
+import { PageShell } from "@/components/desk-ui";
 import { DemoWalkthrough } from "@/components/demo/DemoWalkthrough";
 import { demoState } from "@/server/demo";
 

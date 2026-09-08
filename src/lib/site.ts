@@ -52,7 +52,7 @@ export const COPY = {
       "Mozart helps staffing firms and suppliers request invoice funding through established factoring partners. Send an invoice and your customer list so we can see if there's a fit. We aim for a straight answer on terms this week.",
     primaryCta: "Get a quote",
     secondaryCta: "Book a 20-minute call",
-    note: "Mozart works with established factoring partners to fund invoices today, and is building its own funding. Either way, you get a straight answer this week. We do not advance funds ourselves yet.",
+    note: "Mozart works with established factoring partners to fund invoices today, and is building its own funding. Either way, you get a straight answer this week.",
     chips: [
       {
         k: "Staffing",
@@ -120,7 +120,7 @@ export const COPY = {
       {
         n: "04",
         title: "Partner funds, then collects from your customer",
-        body: "If you accept a partner's terms, that partner advances against the invoice. When your customer pays, the partner reconciles the reserve and their fee. Mozart does not advance funds itself.",
+        body: "If you accept a partner's terms, that partner advances against the invoice. When your customer pays, the partner reconciles the reserve and their fee.",
       },
     ],
     debtorNote:

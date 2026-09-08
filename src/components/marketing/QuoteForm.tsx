@@ -12,24 +12,32 @@ import {
 } from "@/lib/quote";
 import { COPY, founderEmail } from "@/lib/site";
 import { BookCta } from "./FounderCta";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
-const fieldClass =
-  "mt-1.5 w-full rounded-sm border border-hairline bg-stone px-3 py-2.5 text-sm text-soot outline-none focus:border-ledger";
+const selectClass =
+  "flex h-11 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm";
 
 function Field({
   label,
   htmlFor,
   children,
+  className,
 }: {
   label: string;
   htmlFor: string;
   children: ReactNode;
+  className?: string;
 }) {
   return (
-    <label htmlFor={htmlFor} className="block">
-      <span className="text-[12px] font-medium text-soot/80">{label}</span>
+    <div className={cn("space-y-2", className)}>
+      <Label htmlFor={htmlFor}>{label}</Label>
       {children}
-    </label>
+    </div>
   );
 }
 
@@ -77,126 +85,146 @@ export function QuoteForm() {
 
   if (done) {
     return (
-      <div className="border border-hairline bg-stone px-6 py-10 sm:px-8">
-        <h2 className="font-serif text-2xl tracking-tight">{COPY.quote.successTitle}</h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-soot/70">{COPY.quote.success}</p>
-        {done.channel === "mailto" ? (
-          <p className="mt-4 text-sm leading-relaxed text-soot/55">
-            No email provider is configured on this deploy, so your mail app should have opened
-            a message to {founderEmail()}. If it didn&apos;t, use the contact email in the
-            footer.
-          </p>
-        ) : (
-          <p className="mt-4 text-sm leading-relaxed text-soot/55">
-            Delivered by email to {founderEmail()} — not a CRM and not a credit decision.
-          </p>
-        )}
-        <div className="mt-8">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-2xl">{COPY.quote.successTitle}</CardTitle>
+          <CardDescription className="text-[0.9375rem] leading-relaxed">{COPY.quote.success}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          {done.channel === "mailto" ? (
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              No email provider is configured on this deploy, so your mail app should have opened a
+              message to {founderEmail()}. If it didn&apos;t, use the contact email in the footer.
+            </p>
+          ) : (
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Delivered by email to {founderEmail()} — not a CRM and not a credit decision.
+            </p>
+          )}
+        </CardContent>
+        <CardFooter>
           <BookCta>Book a 20-minute call</BookCta>
-        </div>
-      </div>
+        </CardFooter>
+      </Card>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="border border-hairline bg-stone px-6 py-8 sm:px-8 sm:py-10">
-      <p className="text-[15px] leading-relaxed text-soot/70">{COPY.quote.body}</p>
-      <div className="mt-8 grid gap-5 sm:grid-cols-2">
-        <Field label="Company" htmlFor="company">
-          <input id="company" name="company" required className={fieldClass} autoComplete="organization" />
-        </Field>
-        <Field label="Vertical" htmlFor="vertical">
-          <select id="vertical" name="vertical" required defaultValue="" className={fieldClass}>
-            <option value="" disabled>
-              Select…
-            </option>
-            {VERTICAL_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
+    <Card className="min-w-0 overflow-hidden">
+      <form onSubmit={onSubmit}>
+        <CardHeader>
+          <CardDescription className="text-[0.9375rem] leading-relaxed">{COPY.quote.body}</CardDescription>
+        </CardHeader>
+        <CardContent className="grid min-w-0 gap-5 sm:grid-cols-2">
+          <Field label="Company" htmlFor="company">
+            <Input id="company" name="company" required autoComplete="organization" />
+          </Field>
+          <Field label="Vertical" htmlFor="vertical">
+            <select id="vertical" name="vertical" required defaultValue="" className={selectClass}>
+              <option value="" disabled>
+                Select…
               </option>
-            ))}
-          </select>
-        </Field>
-        <Field label="Monthly invoice volume" htmlFor="monthlyVolume">
-          <select id="monthlyVolume" name="monthlyVolume" required defaultValue="" className={fieldClass}>
-            <option value="" disabled>
-              Select…
-            </option>
-            {VOLUME_BANDS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
+              {VERTICAL_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <Field label="Monthly invoice volume" htmlFor="monthlyVolume">
+            <select
+              id="monthlyVolume"
+              name="monthlyVolume"
+              required
+              defaultValue=""
+              className={selectClass}
+            >
+              <option value="" disabled>
+                Select…
               </option>
-            ))}
-          </select>
-        </Field>
-        <Field label="Current terms" htmlFor="currentTerms">
-          <select id="currentTerms" name="currentTerms" required defaultValue="" className={fieldClass}>
-            <option value="" disabled>
-              Select…
-            </option>
-            {TERMS_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
+              {VOLUME_BANDS.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <Field label="Current terms" htmlFor="currentTerms">
+            <select
+              id="currentTerms"
+              name="currentTerms"
+              required
+              defaultValue=""
+              className={selectClass}
+            >
+              <option value="" disabled>
+                Select…
               </option>
-            ))}
-          </select>
-        </Field>
-        <Field label="Average days-to-pay" htmlFor="avgDaysToPay">
-          <select id="avgDaysToPay" name="avgDaysToPay" required defaultValue="" className={fieldClass}>
-            <option value="" disabled>
-              Select…
-            </option>
-            {DAYS_TO_PAY.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
+              {TERMS_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <Field label="Average days-to-pay" htmlFor="avgDaysToPay">
+            <select
+              id="avgDaysToPay"
+              name="avgDaysToPay"
+              required
+              defaultValue=""
+              className={selectClass}
+            >
+              <option value="" disabled>
+                Select…
               </option>
-            ))}
-          </select>
-        </Field>
-        <Field label="Already pledged?" htmlFor="pledged">
-          <select id="pledged" name="pledged" required defaultValue="" className={fieldClass}>
-            <option value="" disabled>
-              Select…
-            </option>
-            {PLEDGED_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
+              {DAYS_TO_PAY.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <Field label="Already pledged?" htmlFor="pledged">
+            <select id="pledged" name="pledged" required defaultValue="" className={selectClass}>
+              <option value="" disabled>
+                Select…
               </option>
-            ))}
-          </select>
-        </Field>
-        <div className="sm:col-span-2">
-          <Field label="Top 3 customers" htmlFor="topCustomers">
-            <textarea
+              {PLEDGED_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <Field label="Top 3 customers" htmlFor="topCustomers" className="sm:col-span-2">
+            <Textarea
               id="topCustomers"
               name="topCustomers"
               required
               rows={3}
-              className={fieldClass}
               placeholder="Who owes the invoices you want to discuss?"
             />
           </Field>
-        </div>
-        <Field label="Work email" htmlFor="email">
-          <input id="email" name="email" type="email" required className={fieldClass} autoComplete="email" />
-        </Field>
-        <Field label="Phone" htmlFor="phone">
-          <input id="phone" name="phone" type="tel" required className={fieldClass} autoComplete="tel" />
-        </Field>
-      </div>
-      {error ? <p className="mt-5 text-sm text-fail">{error}</p> : null}
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <button
-          type="submit"
-          disabled={pending}
-          className="inline-flex items-center justify-center rounded-sm bg-ledger px-5 py-2.5 text-sm font-medium tracking-wide text-stone hover:bg-ledger/90 disabled:opacity-60"
-        >
-          {pending ? "Sending…" : COPY.quote.submit}
-        </button>
-        <p className="text-xs leading-relaxed text-soot/50">
-          Emailed to {founderEmail()}. No fake CRM.
-        </p>
-      </div>
-    </form>
+          <Field label="Work email" htmlFor="email">
+            <Input id="email" name="email" type="email" required autoComplete="email" />
+          </Field>
+          <Field label="Phone" htmlFor="phone">
+            <Input id="phone" name="phone" type="tel" required autoComplete="tel" />
+          </Field>
+        </CardContent>
+        <CardFooter className="flex-col items-start gap-3">
+          {error ? <p className="text-sm text-destructive">{error}</p> : null}
+          <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center">
+            <Button type="submit" disabled={pending} className="h-11 w-full sm:w-auto">
+              {pending ? "Sending…" : COPY.quote.submit}
+            </Button>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Emailed to {founderEmail()}. No fake CRM.
+            </p>
+          </div>
+        </CardFooter>
+      </form>
+    </Card>
   );
 }

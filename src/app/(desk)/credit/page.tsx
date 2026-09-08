@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge, Card, Empty, PageShell } from "@/components/ui";
+import { Badge, Card, Empty, PageShell } from "@/components/desk-ui";
 import { HitlButtons } from "@/components/forms/HitlButtons";
 import { money, pct } from "@/lib/format";
 import { listCreditQueue } from "@/server/credit";

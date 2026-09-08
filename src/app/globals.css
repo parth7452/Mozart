@@ -2,27 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
-}
+@layer base {
+  :root {
+    /* Mozart v2.1 palette: stone / soot / hairline / ledger / brass */
+    --background: 40 38.5% 92.4%;
+    --foreground: 30 11.1% 7.1%;
+    --card: 40 50% 97.6%;
+    --card-foreground: 30 11.1% 7.1%;
+    --popover: 40 50% 97.6%;
+    --popover-foreground: 30 11.1% 7.1%;
+    --primary: 162 39.5% 16.9%;
+    --primary-foreground: 40 38.5% 92.4%;
+    --secondary: 40 39.6% 89.6%;
+    --secondary-foreground: 30 11.1% 7.1%;
+    --muted: 40 39.6% 89.6%;
+    --muted-foreground: 30 8% 38%;
+    --accent: 40 30% 88%;
+    --accent-foreground: 30 11.1% 7.1%;
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 38 22.6% 79.2%;
+    --input: 38 22.6% 79.2%;
+    --ring: 162 39.5% 16.9%;
+    --radius: 0.5rem;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  .dark {
+    --background: 30 11.1% 7.1%;
+    --foreground: 40 38.5% 92.4%;
+    --card: 30 10% 11%;
+    --card-foreground: 40 38.5% 92.4%;
+    --popover: 30 10% 11%;
+    --popover-foreground: 40 38.5% 92.4%;
+    --primary: 162 32% 28%;
+    --primary-foreground: 40 38.5% 92.4%;
+    --secondary: 30 8% 16%;
+    --secondary-foreground: 40 38.5% 92.4%;
+    --muted: 30 8% 16%;
+    --muted-foreground: 38 12% 70%;
+    --accent: 31 36.3% 44.3%;
+    --accent-foreground: 40 38.5% 92.4%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 8% 18%;
+    --input: 30 8% 18%;
+    --ring: 162 32% 42%;
+  }
 
-html,
-body {
-  background: #f3f4f6;
-  color: #111827;
-}
+  * {
+    @apply border-border;
+  }
 
-body {
-  min-height: 100vh;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
+  /*
+   * Marketing-only ~120% type/spacing scale (Chrome 120% zoom).
+   * Applied to html so Tailwind rem utilities scale; removed when leaving (marketing).
+   * Slightly smaller on narrow viewports to avoid horizontal overflow.
+   */
+  html.marketing-zoom {
+    font-size: 115%;
+  }
+
+  @media (min-width: 768px) {
+    html.marketing-zoom {
+      font-size: 120%;
+    }
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 table {
@@ -34,7 +91,7 @@ th,
 td {
   text-align: left;
   padding: 0.65rem 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid hsl(var(--border));
   vertical-align: top;
 }
 
@@ -42,6 +99,6 @@ th {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #6b7280;
+  color: hsl(var(--muted-foreground));
   font-weight: 600;
 }
