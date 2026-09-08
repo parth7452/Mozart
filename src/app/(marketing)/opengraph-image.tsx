@@ -14,37 +14,38 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#ffffff",
-          color: "#09090b",
+          background: "#F3EEE4",
+          color: "#141210",
           padding: "72px 80px",
-          border: "1px solid #e4e4e7",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-            }}
-          >
+          <div style={{ display: "flex", alignItems: "center" }}>
             <div
               style={{
                 width: 40,
                 height: 40,
                 borderRadius: 8,
-                background: "#18181b",
-                color: "#fafafa",
+                background: "#1A3C32",
+                color: "#F3EEE4",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 20,
-                fontWeight: 600,
+                fontSize: 22,
+                fontWeight: 500,
               }}
             >
               M
             </div>
-            <div style={{ fontSize: 22, color: "#71717a" }}>
+            <div
+              style={{
+                marginLeft: 14,
+                fontSize: 20,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "#1A3C32",
+              }}
+            >
               Invoice factoring · Staffing & suppliers
             </div>
           </div>
@@ -54,13 +55,12 @@ export default function OpenGraphImage() {
               fontSize: 56,
               lineHeight: 1.12,
               maxWidth: 880,
-              fontWeight: 600,
             }}
           >
             Payroll is Friday. Your client pays in 45 days.
           </div>
         </div>
-        <div style={{ display: "flex", fontSize: 22, color: "#71717a" }}>
+        <div style={{ display: "flex", fontSize: 22, color: "#1A3C32" }}>
           Mozart · mozart.financial
         </div>
       </div>

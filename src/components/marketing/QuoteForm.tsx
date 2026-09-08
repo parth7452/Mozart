@@ -20,7 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
 const selectClass =
-  "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
+  "flex h-11 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm";
 
 function Field({
   label,
@@ -110,12 +110,12 @@ export function QuoteForm() {
   }
 
   return (
-    <Card>
+    <Card className="min-w-0 overflow-hidden">
       <form onSubmit={onSubmit}>
         <CardHeader>
           <CardDescription className="text-[15px] leading-relaxed">{COPY.quote.body}</CardDescription>
         </CardHeader>
-        <CardContent className="grid gap-5 sm:grid-cols-2">
+        <CardContent className="grid min-w-0 gap-5 sm:grid-cols-2">
           <Field label="Company" htmlFor="company">
             <Input id="company" name="company" required autoComplete="organization" />
           </Field>
@@ -216,7 +216,7 @@ export function QuoteForm() {
         <CardFooter className="flex-col items-start gap-3">
           {error ? <p className="text-sm text-destructive">{error}</p> : null}
           <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center">
-            <Button type="submit" disabled={pending}>
+            <Button type="submit" disabled={pending} className="h-11 w-full sm:w-auto">
               {pending ? "Sending…" : COPY.quote.submit}
             </Button>
             <p className="text-xs leading-relaxed text-muted-foreground">

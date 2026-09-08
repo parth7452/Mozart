@@ -15,6 +15,11 @@ const config: Config = {
         pass: "#047857",
         review: "#b45309",
         fail: "#b91c1c",
+        stone: "#F3EEE4",
+        soot: "#141210",
+        ledger: "#1A3C32",
+        brass: "#9A7348",
+        hairline: "#D6CDBE",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -55,7 +60,15 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["ui-sans-serif", "system-ui", "Helvetica Neue", "Arial", "sans-serif"],
+        marketing: [
+          "var(--font-marketing-sans)",
+          "IBM Plex Sans",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
+        serif: ["var(--font-marketing-serif)", "Georgia", "Times New Roman", "serif"],
         mono: ["ui-monospace", "SFMono-Regular", "monospace"],
       },
       keyframes: {

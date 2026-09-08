@@ -40,6 +40,7 @@ const CUSTOMER_FILES = [
   "src/components/marketing/QuoteForm.tsx",
   "src/components/marketing/FounderCta.tsx",
   "src/components/marketing/FaqList.tsx",
+  "src/components/marketing/Logo.tsx",
   "src/app/layout.tsx",
   "src/app/not-found.tsx",
 ];
@@ -118,12 +119,11 @@ describe("marketing site config", () => {
     }
   });
 
-  it("uses Inter sans on the public site, not a display serif", () => {
-    const root = marketingFile("src/app/layout.tsx");
+  it("restores IBM Plex Sans and Instrument Serif on marketing pages", () => {
     const layout = marketingFile("src/app/(marketing)/layout.tsx");
-    expect(root).toContain("Inter");
-    expect(layout).not.toContain("Instrument_Serif");
-    expect(layout).not.toContain("IBM_Plex_Sans");
+    expect(layout).toContain("IBM_Plex_Sans");
+    expect(layout).toContain("Instrument_Serif");
+    expect(layout).toContain("font-marketing");
   });
 
   it("uses the approved meta title, description, and twitter card", () => {
