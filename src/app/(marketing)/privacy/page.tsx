@@ -33,7 +33,7 @@ export default function PrivacyPage() {
           name, address, and what you chose to write).
         </li>
         <li>
-          If a Cal.com (or similar) booking link is configured, that provider processes the
+          If a Calendly (or similar) booking link is configured, that provider processes the
           scheduling data under their own terms. We only see what they pass through on the
           booking.
         </li>
