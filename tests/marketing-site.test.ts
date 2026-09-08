@@ -93,15 +93,15 @@ describe("marketing site config", () => {
     expect(DEFAULT_PUBLIC_EMAIL).toBe("start@mozart.financial");
   });
 
-  it("defaults booking to the configurable Cal.com placeholder", () => {
+  it("defaults booking to the Calendly event", () => {
     delete process.env.NEXT_PUBLIC_CAL_URL;
     expect(calUrl()).toBe(DEFAULT_CAL_URL);
-    expect(bookCallHref()).toBe("https://cal.com/parth-mozart/20min");
+    expect(bookCallHref()).toBe("https://calendly.com/parthpahuja/30min");
   });
 
-  it("prefers a configured Cal.com URL", () => {
-    process.env.NEXT_PUBLIC_CAL_URL = "https://cal.com/example/mozart";
-    expect(bookCallHref()).toBe("https://cal.com/example/mozart");
+  it("prefers a configured booking URL", () => {
+    process.env.NEXT_PUBLIC_CAL_URL = "https://calendly.com/example/mozart";
+    expect(bookCallHref()).toBe("https://calendly.com/example/mozart");
   });
 
   it("points the quote CTA at /quote", () => {

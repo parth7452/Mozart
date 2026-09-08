@@ -3,7 +3,7 @@
 export const SITE_NAME = "Mozart";
 export const SITE_DOMAIN = "mozart.financial";
 export const DEFAULT_PUBLIC_EMAIL = "start@mozart.financial";
-export const DEFAULT_CAL_URL = "https://cal.com/parth-mozart/20min";
+export const DEFAULT_CAL_URL = "https://calendly.com/parthpahuja/30min";
 
 export function siteUrl(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
