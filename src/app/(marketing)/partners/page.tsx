@@ -14,13 +14,13 @@ export default function PartnersPage() {
     <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-24 lg:px-8">
       <Badge variant="secondary">Partners</Badge>
       <h1 className="mt-5 font-serif text-[2rem] font-normal leading-tight tracking-tight sm:text-5xl">{COPY.partners.title}</h1>
-      <p className="mt-6 text-[15px] leading-relaxed text-muted-foreground">{COPY.partners.intro}</p>
+      <p className="mt-6 text-[0.9375rem] leading-relaxed text-muted-foreground">{COPY.partners.intro}</p>
 
       <div className="mt-12 grid gap-6">
         <Card>
           <CardHeader>
             <CardTitle className="font-serif text-xl font-normal">{COPY.partners.factorTitle}</CardTitle>
-            <CardDescription className="text-[15px] leading-relaxed">
+            <CardDescription className="text-[0.9375rem] leading-relaxed">
               {COPY.partners.factorBody}
             </CardDescription>
           </CardHeader>
@@ -28,7 +28,7 @@ export default function PartnersPage() {
         <Card>
           <CardHeader>
             <CardTitle className="font-serif text-xl font-normal">{COPY.partners.channelTitle}</CardTitle>
-            <CardDescription className="text-[15px] leading-relaxed">
+            <CardDescription className="text-[0.9375rem] leading-relaxed">
               {COPY.partners.channelBody}
             </CardDescription>
           </CardHeader>

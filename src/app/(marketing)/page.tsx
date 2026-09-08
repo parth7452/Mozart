@@ -76,7 +76,7 @@ function Hero() {
           <h1 className="mt-5 max-w-[16ch] font-serif text-[2rem] font-normal leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl lg:leading-[1.08]">
             {COPY.hero.headline}
           </h1>
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
+          <p className="mt-5 max-w-xl text-[0.9375rem] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
             {COPY.hero.subhead}
           </p>
           <HeroCtaBlock
@@ -110,8 +110,8 @@ function Problem() {
         <h2 className="max-w-[18ch] font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl">
           {COPY.problem.title}
         </h2>
-        <p className="mt-6 text-[15px] leading-relaxed text-muted-foreground">{COPY.problem.body}</p>
-        <p className="mt-8 border-l-2 border-primary/40 pl-5 text-[15px] leading-relaxed text-muted-foreground">
+        <p className="mt-6 text-[0.9375rem] leading-relaxed text-muted-foreground">{COPY.problem.body}</p>
+        <p className="mt-8 border-l-2 border-primary/40 pl-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
           {COPY.problem.explain}
         </p>
       </div>
@@ -133,7 +133,7 @@ function Who() {
             </div>
             <Badge variant="muted">{COPY.who.staffingLabel}</Badge>
             <CardTitle className="pt-2 font-serif text-xl font-normal">{COPY.who.staffingTitle}</CardTitle>
-            <CardDescription className="text-[15px] leading-relaxed">
+            <CardDescription className="text-[0.9375rem] leading-relaxed">
               {COPY.who.staffingBody}
             </CardDescription>
           </CardHeader>
@@ -155,7 +155,7 @@ function Who() {
             </div>
             <Badge variant="muted">{COPY.who.supplierLabel}</Badge>
             <CardTitle className="pt-2 font-serif text-xl font-normal">{COPY.who.supplierTitle}</CardTitle>
-            <CardDescription className="text-[15px] leading-relaxed">
+            <CardDescription className="text-[0.9375rem] leading-relaxed">
               {COPY.who.supplierBody}
             </CardDescription>
           </CardHeader>
@@ -185,7 +185,7 @@ function How() {
         <h2 className="max-w-[18ch] font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl">
           {COPY.how.title}
         </h2>
-        <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground">{COPY.how.intro}</p>
+        <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">{COPY.how.intro}</p>
       </div>
       <ol className="mt-10 grid min-w-0 gap-4 sm:mt-12 md:grid-cols-2">
         {COPY.how.steps.map((step, index) => {
@@ -201,7 +201,7 @@ function How() {
                     <Icon className="h-4 w-4 text-muted-foreground" />
                   </div>
                   <CardTitle className="pt-2 font-serif text-lg font-normal">{step.title}</CardTitle>
-                  <CardDescription className="text-[15px] leading-relaxed">{step.body}</CardDescription>
+                  <CardDescription className="text-[0.9375rem] leading-relaxed">{step.body}</CardDescription>
                 </CardHeader>
                 {index === COPY.how.steps.length - 1 ? (
                   <CardContent>
@@ -227,7 +227,7 @@ function Costs() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-[15px] leading-relaxed text-muted-foreground">{COPY.costs.body}</p>
+          <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">{COPY.costs.body}</p>
           <p className="text-sm leading-relaxed text-muted-foreground">{COPY.costs.extras}</p>
         </CardContent>
       </Card>
@@ -252,7 +252,7 @@ function Different() {
                   <Icon className="h-4 w-4 text-primary" />
                 </div>
                 <CardTitle className="font-serif text-base font-normal sm:text-lg">{point.k}</CardTitle>
-                <CardDescription className="text-[15px] leading-relaxed">{point.v}</CardDescription>
+                <CardDescription className="text-[0.9375rem] leading-relaxed">{point.v}</CardDescription>
               </CardHeader>
             </Card>
           );
@@ -285,7 +285,7 @@ function Talk() {
           <h2 className="max-w-md font-serif text-3xl font-normal leading-tight tracking-tight sm:text-4xl">
             {COPY.talk.title}
           </h2>
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-primary-foreground/70 sm:mt-6">
+          <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-primary-foreground/70 sm:mt-6">
             {COPY.talk.body}
           </p>
           <div className="mt-8 sm:mt-10">

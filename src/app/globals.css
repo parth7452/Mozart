@@ -57,6 +57,21 @@
     scroll-behavior: smooth;
   }
 
+  /*
+   * Marketing-only ~120% type/spacing scale (Chrome 120% zoom).
+   * Applied to html so Tailwind rem utilities scale; removed when leaving (marketing).
+   * Slightly smaller on narrow viewports to avoid horizontal overflow.
+   */
+  html.marketing-zoom {
+    font-size: 115%;
+  }
+
+  @media (min-width: 768px) {
+    html.marketing-zoom {
+      font-size: 120%;
+    }
+  }
+
   body {
     @apply min-h-screen bg-background text-foreground antialiased;
   }

@@ -17,7 +17,7 @@ export default function ThesisPage() {
       <h1 className="mt-5 max-w-[18ch] font-serif text-[2rem] font-normal leading-tight tracking-tight sm:text-5xl">
         {COPY.thesis.title}
       </h1>
-      <div className="mt-10 space-y-6 text-[15px] leading-relaxed text-muted-foreground">
+      <div className="mt-10 space-y-6 text-[0.9375rem] leading-relaxed text-muted-foreground">
         <p>{COPY.thesis.p1}</p>
         <p>{COPY.thesis.p2}</p>
       </div>

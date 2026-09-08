@@ -88,7 +88,7 @@ export function QuoteForm() {
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">{COPY.quote.successTitle}</CardTitle>
-          <CardDescription className="text-[15px] leading-relaxed">{COPY.quote.success}</CardDescription>
+          <CardDescription className="text-[0.9375rem] leading-relaxed">{COPY.quote.success}</CardDescription>
         </CardHeader>
         <CardContent>
           {done.channel === "mailto" ? (
@@ -113,7 +113,7 @@ export function QuoteForm() {
     <Card className="min-w-0 overflow-hidden">
       <form onSubmit={onSubmit}>
         <CardHeader>
-          <CardDescription className="text-[15px] leading-relaxed">{COPY.quote.body}</CardDescription>
+          <CardDescription className="text-[0.9375rem] leading-relaxed">{COPY.quote.body}</CardDescription>
         </CardHeader>
         <CardContent className="grid min-w-0 gap-5 sm:grid-cols-2">
           <Field label="Company" htmlFor="company">

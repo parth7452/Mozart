@@ -124,6 +124,8 @@ describe("marketing site config", () => {
     expect(layout).toContain("IBM_Plex_Sans");
     expect(layout).toContain("Instrument_Serif");
     expect(layout).toContain("font-marketing");
+    expect(layout).toContain("marketing-zoom");
+    expect(layout).toContain("MarketingHtmlZoom");
   });
 
   it("uses the approved meta title, description, and twitter card", () => {
