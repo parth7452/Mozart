@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui";
+import { Button } from "@/components/desk-ui";
 
 export function HitlButtons({ invoiceId }: { invoiceId: string }) {
   const router = useRouter();

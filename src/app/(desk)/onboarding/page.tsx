@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge, Card, Empty, PageShell } from "@/components/ui";
+import { Badge, Card, Empty, PageShell } from "@/components/desk-ui";
 import { CreateClientForm } from "@/components/forms/CreateClientForm";
 import { clientFundPath, listClients } from "@/server/clients";
 import { VERTICAL_LABEL, type Vertical } from "@/domain/verticals";

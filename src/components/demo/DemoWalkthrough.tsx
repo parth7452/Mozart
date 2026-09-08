@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { Badge, Button, Card } from "@/components/ui";
+import { Badge, Button, Card } from "@/components/desk-ui";
 import { money } from "@/lib/format";
 
 type DemoState = {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge, Card, Empty, PageShell } from "@/components/ui";
+import { Badge, Card, Empty, PageShell } from "@/components/desk-ui";
 import { CreateInvoiceForm } from "@/components/forms/CreateInvoiceForm";
 import { money } from "@/lib/format";
 import { listClients } from "@/server/clients";

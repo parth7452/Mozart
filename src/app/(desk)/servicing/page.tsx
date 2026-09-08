@@ -1,4 +1,4 @@
-import { Badge, Card, Empty, PageShell } from "@/components/ui";
+import { Badge, Card, Empty, PageShell } from "@/components/desk-ui";
 import { CashAppForm } from "@/components/forms/CashAppForm";
 import { CollectionAdvance } from "@/components/forms/CollectionAdvance";
 import { Ucc1Advance } from "@/components/forms/Ucc1Advance";

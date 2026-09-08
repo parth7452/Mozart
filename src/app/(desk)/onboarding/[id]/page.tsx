@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Badge, Card, PageShell } from "@/components/ui";
+import { Badge, Card, PageShell } from "@/components/desk-ui";
 import { AdapterPanel } from "@/components/forms/AdapterPanel";
 import { OnboardingDecide } from "@/components/forms/OnboardingDecide";
 import { clientFundPath, getClient } from "@/server/clients";

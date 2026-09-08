@@ -14,35 +14,54 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#F3EEE4",
-          color: "#141210",
+          background: "#ffffff",
+          color: "#09090b",
           padding: "72px 80px",
+          border: "1px solid #e4e4e7",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              fontSize: 20,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: "#9A7348",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
             }}
           >
-            Invoice factoring · Staffing & suppliers
+            <div
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 8,
+                background: "#18181b",
+                color: "#fafafa",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 20,
+                fontWeight: 600,
+              }}
+            >
+              M
+            </div>
+            <div style={{ fontSize: 22, color: "#71717a" }}>
+              Invoice factoring · Staffing & suppliers
+            </div>
           </div>
           <div
             style={{
-              marginTop: 32,
-              fontSize: 58,
+              marginTop: 40,
+              fontSize: 56,
               lineHeight: 1.12,
               maxWidth: 880,
+              fontWeight: 600,
             }}
           >
             Payroll is Friday. Your client pays in 45 days.
           </div>
         </div>
-        <div style={{ display: "flex", fontSize: 22, color: "#1A3C32" }}>
-          Mozart · Invoice factoring · mozart.financial
+        <div style={{ display: "flex", fontSize: 22, color: "#71717a" }}>
+          Mozart · mozart.financial
         </div>
       </div>
     ),

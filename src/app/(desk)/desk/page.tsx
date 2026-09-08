@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FUNDING_POLICY } from "@/domain/policy";
-import { Badge, Card, PageShell } from "@/components/ui";
+import { Badge, Card, PageShell } from "@/components/desk-ui";
 import { money } from "@/lib/format";
 import { listClients } from "@/server/clients";
 import { listInvoices } from "@/server/invoices";

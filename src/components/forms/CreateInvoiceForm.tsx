@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
-import { Button, Card, Field, inputClass } from "@/components/ui";
+import { Button, Card, Field, inputClass } from "@/components/desk-ui";
 
 export function CreateInvoiceForm({
   clients,

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { BookCta } from "@/components/marketing/FounderCta";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { COPY } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -9,25 +11,31 @@ export const metadata: Metadata = {
 
 export default function PartnersPage() {
   return (
-    <article className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-28">
-      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-brass">Partners</p>
-      <h1 className="mt-5 font-serif text-4xl leading-tight tracking-tight sm:text-5xl">
-        {COPY.partners.title}
-      </h1>
-      <p className="mt-6 text-[15px] leading-relaxed text-soot/75">{COPY.partners.intro}</p>
+    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <Badge variant="secondary">Partners</Badge>
+      <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">{COPY.partners.title}</h1>
+      <p className="mt-6 text-[15px] leading-relaxed text-muted-foreground">{COPY.partners.intro}</p>
 
-      <section className="mt-14 border-t border-hairline pt-10">
-        <h2 className="font-serif text-2xl tracking-tight">{COPY.partners.factorTitle}</h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-soot/75">{COPY.partners.factorBody}</p>
-      </section>
-
-      <section className="mt-12 border-t border-hairline pt-10">
-        <h2 className="font-serif text-2xl tracking-tight">{COPY.partners.channelTitle}</h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-soot/75">{COPY.partners.channelBody}</p>
-      </section>
-
-      <div className="mt-14">
-        <BookCta variant="primary">{COPY.partners.cta}</BookCta>
+      <div className="mt-12 grid gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-xl">{COPY.partners.factorTitle}</CardTitle>
+            <CardDescription className="text-[15px] leading-relaxed">
+              {COPY.partners.factorBody}
+            </CardDescription>
+          </CardHeader>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-xl">{COPY.partners.channelTitle}</CardTitle>
+            <CardDescription className="text-[15px] leading-relaxed">
+              {COPY.partners.channelBody}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <BookCta variant="default">{COPY.partners.cta}</BookCta>
+          </CardContent>
+        </Card>
       </div>
     </article>
   );
