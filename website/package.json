@@ -1,0 +1,11 @@
+{
+  "name": "mozart-financial-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mozart Financial marketing site",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "build": "node --check dist/script.js"
+  }
+}
